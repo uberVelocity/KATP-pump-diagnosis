@@ -4,9 +4,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import sample.controller.Controller;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Logical controller for the title screen scene.
+ */
 public class TitleController {
 
     private Logger logger = Logger.getLogger(this.getClass().getName());

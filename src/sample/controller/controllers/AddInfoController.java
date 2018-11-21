@@ -4,6 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import sample.controller.Controller;
 
+/**
+ * Logical controller for the additional info scene.
+ */
 public class AddInfoController {
 
     private Controller controller;
