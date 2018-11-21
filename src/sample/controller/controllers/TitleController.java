@@ -2,21 +2,27 @@ package sample.controller.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import sample.controller.Controller;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * Logical controller for the title screen scene.
  */
-public class TitleController implements SceneController {
+public class TitleController extends SceneController {
 
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     private Controller controller;
 
     @FXML
-    private Button button;
+    private Button nextButton;
+
+    @FXML
+    private TextArea textArea;
 
     public TitleController() {
 
@@ -26,9 +32,15 @@ public class TitleController implements SceneController {
         this.controller = controller;
     }
 
+    public void displayInterface() {
+        fadeTransition(textArea, 700);
+        textArea.setVisible(true);
+    }
+
     public void setButtonActions() {
-        button.setOnAction(e -> {
-            if(button.getId().equals("button")) {
+        logger.log(Level.INFO, "SET ACTIONS OF BUTTONS ...");
+        nextButton.setOnAction(e -> {
+            if(nextButton.getId().equals("nextButton")) {
                 controller.getView().getPrimaryStage().setScene(controller.getView().getAdditionalInfoScene());
             }
         });

@@ -52,16 +52,18 @@ public class View {
         loader.setController(titleController);
         titleScreenParent = loader.load();
         titleScene = new Scene(titleScreenParent);
-        primaryStage.setScene(titleScene);
 
         loader = new FXMLLoader(getClass().getResource("additionalinfo.fxml"));
         loader.setController(addInfoController);
         additionalInfoParent = loader.load();
         additionalInfoScene = new Scene(additionalInfoParent);
 
-        logger.log(Level.INFO, "Should show the stage");
+        logger.log(Level.INFO, "FXML FILES LOADED ...");
 
         primaryStage.setTitle("Centrifugal pump diagnosis");
+
+        logger.log(Level.INFO, "SHOWING PRIMARY STAGE ...");
+        primaryStage.setScene(titleScene);
         primaryStage.show();
     }
 

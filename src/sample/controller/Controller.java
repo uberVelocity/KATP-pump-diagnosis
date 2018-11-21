@@ -28,9 +28,9 @@ public class Controller {
         this.model = model;
         this.view = view;
         initializeFXMLControllers();
-        /* */
         callFXMLLoaders();
         setButtonActions();
+        displayTitleInterface();
     }
 
     /**
@@ -61,6 +61,13 @@ public class Controller {
     }
 
     /**
+     * Makes visible the elements of title scene.
+     */
+    private void displayTitleInterface() {
+        titleController.displayInterface();
+    }
+
+    /**
      * Initializes the actions for each button in the program.
      * This should be called after the FXML files have been loaded
      * so that there are references to the button id's.
@@ -68,7 +75,7 @@ public class Controller {
     private void setButtonActions() {
         titleController.setButtonActions();
         addInfoController.setButtonActions();
-        logger.log(Level.INFO, "Button actions initialized");
+        logger.log(Level.INFO, "BUTTON ACTIONS INITIALIZED ...");
     }
 
     public AddInfoController getAddInfoController() {
