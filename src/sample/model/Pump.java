@@ -1,5 +1,8 @@
 package sample.model;
 
+/**
+ * Class which holds the information of the centrifugal pump.
+ */
 public class Pump {
 
     private boolean isVibrating = false;

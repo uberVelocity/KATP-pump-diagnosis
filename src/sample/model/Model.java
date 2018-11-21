@@ -1,5 +1,9 @@
 package sample.model;
 
+
+/**
+ * The model of the program. It has a pump. Deal with it.
+ */
 public class Model {
 
     private Pump pump;
