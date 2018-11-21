@@ -5,6 +5,7 @@ import sample.controller.controllers.TitleController;
 import sample.model.Model;
 import sample.view.View;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Controller {
@@ -37,7 +38,7 @@ public class Controller {
 
     private void initializeView() {
         try {
-            view.initializeView(view.getPrimaryStage());
+            view.loadFXMLFiles(view.getPrimaryStage());
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -48,6 +49,7 @@ public class Controller {
         titleController.setButtonAction();
         addInfoController.setButtonAction();
         addInfoController.setButtonAction2();
+        logger.log(Level.INFO, "Button actions initialized");
     }
 
     public AddInfoController getAddInfoController() {

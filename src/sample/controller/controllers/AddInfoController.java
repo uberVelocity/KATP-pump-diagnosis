@@ -22,6 +22,7 @@ public class AddInfoController {
         this.controller = controller;
     }
 
+    @FXML
     public void setButtonAction() {
         button.setOnAction(e -> {
             if(button.getId().equals("button")) {
@@ -30,9 +31,9 @@ public class AddInfoController {
         });
     }
 
+    @FXML
     public void setButtonAction2() {
         button2.setOnAction(e -> {
-            System.out.println("Hey, I;m a button");
             button2.setText("Stop touching me!");
         });
     }

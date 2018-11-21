@@ -13,25 +13,6 @@ public class Commander {
         this.controller = controller;
     }
 
-    public void setUsername(String username) {
-        if (isValidUsername(username)) {
-            controller.getModel().getUser().setName(username);
-        }
-        else {
-            logger.log(Level.WARNING, "not a valid username ...");
-        }
-    }
-
-    private boolean isValidUsername(String username) {
-        char[] chars = username.toCharArray();
-        for (char c : chars) {
-            if(!Character.isLetter(c)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     public Controller getController() {
         return controller;
     }

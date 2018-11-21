@@ -29,7 +29,8 @@ public class View {
         this.primaryStage = primaryStage;
     }
 
-    public void initializeView(Stage primaryStage) throws Exception {
+    public void loadFXMLFiles(Stage primaryStage) throws Exception {
+        logger.log(Level.INFO, "LOADING FXML FILES ...");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("titlescreen.fxml"));
         loader.setController(titleController);
         titleScreenParent = loader.load();

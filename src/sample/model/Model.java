@@ -2,22 +2,21 @@ package sample.model;
 
 public class Model {
 
-    private User user;
+    private Pump pump;
 
     public Model() {
-        user = new User();
+        pump = new Pump();
     }
 
-    public Model(User user) {
-        this.user = user;
+    public Model(Pump pump) {
+        this.pump = pump;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setPump(Pump pump) {
+        this.pump = pump;
     }
 
-    public User getUser() {
-        return user;
+    public Pump getPump() {
+        return pump;
     }
-
 }
