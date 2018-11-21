@@ -5,6 +5,6 @@
 <?import javafx.scene.layout.Pane?>
 
 <Pane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
-  <TextArea layoutX="250.0" layoutY="212.0" prefHeight="77.0" prefWidth="200.0" text="Food Tracking app&#10;-Made in JavaFX&#10;" />
+  <TextArea layoutX="250.0" layoutY="212.0" prefHeight="77.0" prefWidth="200.0" text="Centrifugal app&#10;-Made in JavaFX&#10;" />
   <Button fx:id="button" layoutX="611.0" layoutY="461.0" mnemonicParsing="false" text="Next scene" />
 </Pane>
