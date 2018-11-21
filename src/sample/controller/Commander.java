@@ -48,6 +48,11 @@ public class Commander {
         }
     }
 
+    /**
+     * Checks whether the RPM is non-negative.
+     * @param stringRpm
+     * @return
+     */
     private static boolean isValidRpm(String stringRpm) {
         int rpm = Integer.parseInt(stringRpm);
         if(rpm < 0) {
@@ -56,6 +61,11 @@ public class Commander {
         return true;
     }
 
+    /**
+     * Checks whether the RPM is out of normal operational use.
+     * @param stringRpm Input rpm from textField.
+     * @return Whether RPM is out of normal mode of operation.
+     */
     private static boolean rpmOutOfBounds(String stringRpm) {
         int rpm = Integer.parseInt(stringRpm);
         if(rpm < 800 || rpm > 1200) {
@@ -64,6 +74,12 @@ public class Commander {
         return false;
     }
 
+    /**
+     * Checks whether the text s is an integer.
+     * @param s Input string.
+     * @param radix Size of radix.
+     * @return Whether string is integer.
+     */
     private static boolean isInteger(String s, int radix) {
         if(s.isEmpty()) return false;
         for(int i = 0; i < s.length(); i++) {
