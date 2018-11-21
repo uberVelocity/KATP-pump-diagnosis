@@ -9,14 +9,14 @@ import java.util.logging.Logger;
 /**
  * Logical controller for the title screen scene.
  */
-public class TitleController {
+public class TitleController implements SceneController {
 
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     private Controller controller;
 
     @FXML
-    public Button button;
+    private Button button;
 
     public TitleController() {
 
@@ -26,7 +26,7 @@ public class TitleController {
         this.controller = controller;
     }
 
-    public void setButtonAction() {
+    public void setButtonActions() {
         button.setOnAction(e -> {
             if(button.getId().equals("button")) {
                 controller.getView().getPrimaryStage().setScene(controller.getView().getAdditionalInfoScene());

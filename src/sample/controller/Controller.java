@@ -66,7 +66,7 @@ public class Controller {
      * so that there are references to the button id's.
      */
     private void setButtonActions() {
-        titleController.setButtonAction();
+        titleController.setButtonActions();
         addInfoController.setButtonActions();
         logger.log(Level.INFO, "Button actions initialized");
     }

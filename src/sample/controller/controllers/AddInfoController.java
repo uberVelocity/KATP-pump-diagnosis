@@ -11,27 +11,27 @@ import sample.controller.Controller;
 /**
  * Logical controller for the additional info scene.
  */
-public class AddInfoController {
+public class AddInfoController implements SceneController {
 
     private Controller controller;
 
     @FXML
-    public Button previousButton;
+    private Button previousButton;
 
     @FXML
-    public Button nextButton;
+    private Button nextButton;
 
     @FXML
-    public Button yesButton;
+    private Button yesButton;
 
     @FXML
-    public Button noButton;
+    private Button noButton;
 
     @FXML
-    public Label noLabel;
+    private Label noLabel;
 
     @FXML
-    public Label yesLabel;
+    private Label yesLabel;
 
     public AddInfoController() {
 
@@ -42,7 +42,7 @@ public class AddInfoController {
     }
 
     @FXML
-    public void setButtonAction() {
+    public void setButtonActionPrevious() {
         previousButton.setOnAction(e -> {
             if(previousButton.getId().equals("button")) {
                 controller.getView().getPrimaryStage().setScene(controller.getView().getTitleScene());
@@ -51,7 +51,7 @@ public class AddInfoController {
     }
 
     @FXML
-    public void setButtonAction2() {
+    public void setButtonActionNext() {
         nextButton.setOnAction(e -> {
             if(nextButton.getId().equals("button2")) {
                 nextButton.setText("Stop touching me!");
