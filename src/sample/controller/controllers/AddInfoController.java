@@ -79,7 +79,7 @@ public class AddInfoController extends SceneController {
         });
         nextButton.setOnAction(e -> {
             if(nextButton.getId().equals("nextButton")) {
-                nextButton.setText("Stop touching me!");
+                controller.getView().getPrimaryStage().setScene(controller.getView().getMainQuestionScene());
             }
         });
         yesButton.setOnAction(e -> {

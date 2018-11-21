@@ -1,6 +1,7 @@
 package sample.controller;
 
 import sample.controller.controllers.AddInfoController;
+import sample.controller.controllers.MainQuestionController;
 import sample.controller.controllers.TitleController;
 import sample.model.Model;
 import sample.view.View;
@@ -22,6 +23,7 @@ public class Controller {
     /* Controller classes that handle logic of FXML files. */
     private AddInfoController addInfoController;
     private TitleController titleController;
+    private MainQuestionController mainQuestionController;
 
     public Controller(Model model, View view) {
         commander = new Commander(this);
@@ -41,9 +43,11 @@ public class Controller {
     private void initializeFXMLControllers() {
         addInfoController = new AddInfoController(this);
         titleController = new TitleController(this);
+        mainQuestionController = new MainQuestionController(this);
 
         view.setTitleController(titleController);
         view.setAddInfoController(addInfoController);
+        view.setMainQuestionController(mainQuestionController);
     }
 
     /**
@@ -75,6 +79,8 @@ public class Controller {
     private void setButtonActions() {
         titleController.setButtonActions();
         addInfoController.setButtonActions();
+        mainQuestionController.setButtonActions();
+
         logger.log(Level.INFO, "BUTTON ACTIONS INITIALIZED ...");
     }
 
@@ -84,6 +90,10 @@ public class Controller {
 
     public TitleController getTitleController() {
         return titleController;
+    }
+
+    public MainQuestionController getMainQuestionController() {
+        return mainQuestionController;
     }
 
     public Commander getCommander() {

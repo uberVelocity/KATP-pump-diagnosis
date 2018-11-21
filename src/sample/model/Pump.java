@@ -7,6 +7,10 @@ public class Pump {
 
     private boolean isVibrating = false;
     private boolean isOperating = false;
+    private String recommendation;
+
+    /* RPM parameter used by Mihai for testing field inputs. */
+    private int rpm;
 
     public Pump() {
 
@@ -26,5 +30,21 @@ public class Pump {
 
     public boolean isOperating() {
         return isOperating;
+    }
+
+    public void setRecommendation(String recommendation) {
+        this.recommendation = recommendation;
+    }
+
+    public String getRecommendation() {
+        return recommendation;
+    }
+
+    public void setRpm(int rpm) {
+        this.rpm = rpm;
+    }
+
+    public int getRpm() {
+        return rpm;
     }
 }

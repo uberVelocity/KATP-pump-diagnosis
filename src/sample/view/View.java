@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sample.controller.controllers.AddInfoController;
+import sample.controller.controllers.MainQuestionController;
 import sample.controller.controllers.TitleController;
 
 import java.util.logging.Level;
@@ -26,12 +27,15 @@ public class View {
 
     private Parent titleScreenParent;
     private Parent additionalInfoParent;
+    private Parent mainQuestionParent;
 
     private Scene titleScene;
     private Scene additionalInfoScene;
+    private Scene mainQuestionScene;
 
     private TitleController titleController;
     private AddInfoController addInfoController;
+    private MainQuestionController mainQuestionController;
 
     public View(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
@@ -57,6 +61,11 @@ public class View {
         loader.setController(addInfoController);
         additionalInfoParent = loader.load();
         additionalInfoScene = new Scene(additionalInfoParent);
+
+        loader = new FXMLLoader(getClass().getResource("mainquestion.fxml"));
+        loader.setController(mainQuestionController);
+        mainQuestionParent = loader.load();
+        mainQuestionScene = new Scene(mainQuestionParent);
 
         logger.log(Level.INFO, "FXML FILES LOADED ...");
 
@@ -101,5 +110,21 @@ public class View {
 
     public Parent getAdditionalInfoParent() {
         return additionalInfoParent;
+    }
+
+    public Parent getMainQuestionParent() {
+        return mainQuestionParent;
+    }
+
+    public Scene getMainQuestionScene() {
+        return mainQuestionScene;
+    }
+
+    public MainQuestionController getMainQuestionController() {
+        return mainQuestionController;
+    }
+
+    public void setMainQuestionController(MainQuestionController mainQuestionController) {
+        this.mainQuestionController = mainQuestionController;
     }
 }
