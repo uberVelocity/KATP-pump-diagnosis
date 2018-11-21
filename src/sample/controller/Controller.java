@@ -67,8 +67,7 @@ public class Controller {
      */
     private void setButtonActions() {
         titleController.setButtonAction();
-        addInfoController.setButtonAction();
-        addInfoController.setButtonAction2();
+        addInfoController.setButtonActions();
         logger.log(Level.INFO, "Button actions initialized");
     }
 
