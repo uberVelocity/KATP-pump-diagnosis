@@ -11,6 +11,9 @@ public class AddInfoController {
     @FXML
     public Button button;
 
+    @FXML
+    public Button button2;
+
     public AddInfoController() {
 
     }
@@ -24,6 +27,13 @@ public class AddInfoController {
             if(button.getId().equals("button")) {
                 controller.getView().getPrimaryStage().setScene(controller.getView().getTitleScene());
             }
+        });
+    }
+
+    public void setButtonAction2() {
+        button2.setOnAction(e -> {
+            System.out.println("Hey, I;m a button");
+            button2.setText("Stop touching me!");
         });
     }
 

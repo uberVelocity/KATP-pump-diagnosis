@@ -7,4 +7,5 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <TextArea layoutX="250.0" layoutY="150.0" prefHeight="200.0" prefWidth="200.0" text="Alternative view, nothing to see here no empty catches haha how could we have this catch() {}" />
   <Button fx:id="button" layoutX="14.0" layoutY="461.0" mnemonicParsing="false" text="Previous scene" />
+   <Button layoutX="611.0" layoutY="461.0" mnemonicParsing="false" text="Next scene" fx:id="button2"/>
 </Pane>

@@ -33,7 +33,6 @@ public class Controller {
 
         view.setTitleController(titleController);
         view.setAddInfoController(addInfoController);
-
     }
 
     private void initializeView() {
@@ -48,6 +47,7 @@ public class Controller {
     private void setButtonActions() {
         titleController.setButtonAction();
         addInfoController.setButtonAction();
+        addInfoController.setButtonAction2();
     }
 
     public AddInfoController getAddInfoController() {
