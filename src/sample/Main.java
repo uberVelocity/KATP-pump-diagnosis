@@ -19,9 +19,6 @@ public class Main extends Application {
     /*
     Whenever the main java program starts it calls launch(args) and sets up the program
     as a JavaFX application. The app will call the method start().
-
-    Stage - Entire window in JavaFX
-    Scene - Content within the Stage
      */
     public static void main(String[] args) {
         launch(args);

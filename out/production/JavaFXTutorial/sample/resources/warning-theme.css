@@ -1,0 +1,8 @@
+
+* {
+    -fx-inputwarningcolor: rgb(68, 230, 255);
+}
+
+.label {
+    -fx-text-fill: -fx-inputwarningcolor;
+}

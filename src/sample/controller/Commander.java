@@ -1,5 +1,13 @@
 package sample.controller;
 
+import javafx.animation.FadeTransition;
+import javafx.scene.control.Control;
+import javafx.util.Duration;
+import sample.controller.controllers.AddInfoController;
+import sample.controller.controllers.MainQuestionController;
+import sample.controller.controllers.SceneController;
+import sample.controller.controllers.TitleController;
+
 import java.util.logging.Logger;
 
 /**
@@ -37,6 +45,7 @@ public class Commander {
             }
             else {
                 controller.getView().getMainQuestionController().getWarningLabel().setText("RPM out of bounds");
+                fadeTransition(controller.getView().getMainQuestionController().getWarningLabel(), 700);
                 controller.getModel().getPump().setRpm(Integer.parseInt(rpm));
                 controller.getView().getMainQuestionController().getWarningLabel().setVisible(true);
                 System.out.println(controller.getModel().getPump().getRpm());
@@ -44,6 +53,7 @@ public class Commander {
         }
         else {
             controller.getView().getMainQuestionController().getWarningLabel().setText("RPM should be a non-zero positive integer");
+            fadeTransition(controller.getView().getMainQuestionController().getWarningLabel(), 700);
             controller.getView().getMainQuestionController().getWarningLabel().setVisible(true);
         }
     }
@@ -90,5 +100,18 @@ public class Commander {
             if(Character.digit(s.charAt(i),radix) < 0) return false;
         }
         return true;
+    }
+
+    /**
+     * Should only be in SceneController, rethink commander class.
+     * @param control
+     * @param fadeDuration
+     */
+    public void fadeTransition(Control control, int fadeDuration) {
+        FadeTransition ft = new FadeTransition(Duration.millis(fadeDuration), control);
+        ft.setFromValue(0.0);
+        ft.setToValue(1.0);
+        ft.play();
+        control.setVisible(true);
     }
 }

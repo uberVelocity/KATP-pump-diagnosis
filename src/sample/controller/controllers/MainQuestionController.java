@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import sample.controller.Controller;
 
-public class MainQuestionController {
+public class MainQuestionController extends SceneController{
 
     private Controller controller;
 

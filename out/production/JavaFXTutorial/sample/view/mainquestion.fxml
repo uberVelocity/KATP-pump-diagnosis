@@ -1,27 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" stylesheets="@../resources/dark-theme.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="66.0" layoutY="52.0" text="How many RPMs does the pump have?">
          <font>
             <Font size="33.0" />
          </font>
       </Label>
-      <TextField fx:id="textField" layoutX="276.0" layoutY="158.0" />
-      <Label layoutX="240.0" layoutY="128.0" text="(normal values range between 800 - 1200)">
+      <TextField fx:id="textField" layoutX="242.0" layoutY="162.0" />
+      <Label layoutX="240.0" layoutY="128.0" text="normal values range between 800 - 1200">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
       </Label>
-      <Button fx:id="previousButton" layoutX="14.0" layoutY="461.0" mnemonicParsing="false" text="Previous scene" />
-      <Button fx:id="nextButton" layoutX="611.0" layoutY="461.0" mnemonicParsing="false" text="Next scene" />
-      <Label fx:id="warningLabel" visible="false" layoutX="274.0" layoutY="191.0" text="(RPM should be an integer)" textFill="#f20202">
+      <Button fx:id="previousButton" layoutX="14.0" layoutY="442.0" mnemonicParsing="false" text="Previous scene" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button fx:id="nextButton" layoutX="574.0" layoutY="442.0" mnemonicParsing="false" text="Next scene" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Label fx:id="warningLabel" layoutX="243.0" layoutY="209.0" prefHeight="26.0" prefWidth="352.0" stylesheets="@../resources/warning-theme.css" text="RPM should be an integer" textAlignment="JUSTIFY" textFill="#f226c5" visible="false">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
