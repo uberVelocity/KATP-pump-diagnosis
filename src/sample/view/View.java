@@ -6,10 +6,12 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sample.controller.controllers.AddInfoController;
 import sample.controller.controllers.MainQuestionController;
+import sample.controller.controllers.SceneController;
 import sample.controller.controllers.TitleController;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+/* TODO: Split primaryStage and inferenceStage into different classes. */
 
 /**
  * Class which implements the GUI of the program. The GUI is created using
@@ -32,6 +34,8 @@ public class View {
     private Scene titleScene;
     private Scene additionalInfoScene;
     private Scene mainQuestionScene;
+
+    private SceneController sceneController;
 
     private TitleController titleController;
     private AddInfoController addInfoController;
@@ -126,5 +130,9 @@ public class View {
 
     public void setMainQuestionController(MainQuestionController mainQuestionController) {
         this.mainQuestionController = mainQuestionController;
+    }
+
+    public void setSceneController(SceneController sceneController) {
+        this.sceneController = sceneController;
     }
 }

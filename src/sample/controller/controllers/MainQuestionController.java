@@ -36,9 +36,36 @@ public class MainQuestionController extends SceneController{
         });
         nextButton.setOnAction(e -> {
             if(nextButton.getId().equals("nextButton")) {
-                controller.getCommander().setRpm(textField.getText());
+                setRpm(textField.getText());
             }
         });
+    }
+
+    /**
+     * Verifies if the input of the text field is a valid value for the RPM of the
+     * pump and, if it is, assigns the rpm of the pump the value of @rpm.
+     * @param rpm
+     */
+    private void setRpm(String rpm) {
+        if(controller.getCommander().isInteger(rpm, 10) && controller.getCommander().isValidRpm(rpm)) {
+            if (!controller.getCommander().rpmOutOfBounds(rpm)) {
+                controller.getView().getMainQuestionController().getWarningLabel().setVisible(false);
+                controller.getModel().getPump().setRpm(Integer.parseInt(rpm));
+                System.out.println(controller.getModel().getPump().getRpm());
+            }
+            else {
+                controller.getView().getMainQuestionController().getWarningLabel().setText("RPM out of bounds");
+                fadeTransition(controller.getView().getMainQuestionController().getWarningLabel(), 700);
+                controller.getModel().getPump().setRpm(Integer.parseInt(rpm));
+                controller.getView().getMainQuestionController().getWarningLabel().setVisible(true);
+                System.out.println(controller.getModel().getPump().getRpm());
+            }
+        }
+        else {
+            controller.getView().getMainQuestionController().getWarningLabel().setText("RPM should be a non-zero positive integer");
+            fadeTransition(controller.getView().getMainQuestionController().getWarningLabel(), 700);
+            controller.getView().getMainQuestionController().getWarningLabel().setVisible(true);
+        }
     }
 
     public Label getWarningLabel() {

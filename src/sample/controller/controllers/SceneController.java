@@ -3,6 +3,8 @@ package sample.controller.controllers;
 import javafx.animation.FadeTransition;
 import javafx.scene.control.Control;
 import javafx.util.Duration;
+import sample.controller.Commander;
+import sample.controller.Controller;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,5 +24,4 @@ public class SceneController {
         ft.play();
         control.setVisible(true);
     }
-
 }
