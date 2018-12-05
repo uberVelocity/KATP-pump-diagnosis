@@ -1,0 +1,13 @@
+package sample.model;
+dialect  "mvel"
+import Pump;
+import Model;
+
+
+rule "Rules"
+    when
+        pump : Pump(pump.isVibrating() == true)
+    then
+        System.out.println("The pump is vibrating");
+end
+

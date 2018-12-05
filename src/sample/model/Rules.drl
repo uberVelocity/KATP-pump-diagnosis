@@ -1,7 +1,0 @@
-package sample.model;
-dialect  "mvel"
-
-rule "Rules"
-    when
-    then
-end
