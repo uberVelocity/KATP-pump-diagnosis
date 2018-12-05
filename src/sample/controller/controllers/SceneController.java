@@ -3,11 +3,12 @@ package sample.controller.controllers;
 import javafx.animation.FadeTransition;
 import javafx.scene.control.Control;
 import javafx.util.Duration;
-import sample.controller.Commander;
-import sample.controller.Controller;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+/**
+ * !TODO: Decide based on the inference made by the system which scene to be set.
+ */
 
 public class SceneController {
 

@@ -2,7 +2,6 @@ package sample.controller;
 
 import sample.controller.controllers.AddInfoController;
 import sample.controller.controllers.MainQuestionController;
-import sample.controller.controllers.SceneController;
 import sample.controller.controllers.TitleController;
 import sample.model.Model;
 import sample.view.View;

@@ -7,6 +7,7 @@ public class Pump {
 
     private boolean isVibrating = false;
     private boolean isOperating = false;
+
     private String recommendation;
 
     /* RPM parameter used by Mihai for testing field inputs. */

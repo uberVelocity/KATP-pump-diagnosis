@@ -35,8 +35,6 @@ public class View {
     private Scene additionalInfoScene;
     private Scene mainQuestionScene;
 
-    private SceneController sceneController;
-
     private TitleController titleController;
     private AddInfoController addInfoController;
     private MainQuestionController mainQuestionController;
@@ -132,7 +130,4 @@ public class View {
         this.mainQuestionController = mainQuestionController;
     }
 
-    public void setSceneController(SceneController sceneController) {
-        this.sceneController = sceneController;
-    }
 }

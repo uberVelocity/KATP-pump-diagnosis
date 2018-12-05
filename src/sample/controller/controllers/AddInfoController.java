@@ -85,6 +85,7 @@ public class AddInfoController extends SceneController {
         yesButton.setOnAction(e -> {
             if(yesButton.getId().equals("yesButton")) {
                 fadeTransition(yesLabel, 500);
+                controller.getView().getPrimaryStage().setScene(controller.getCommander().decideScene());
             }
         });
         noButton.setOnAction(e -> {

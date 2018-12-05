@@ -1,5 +1,8 @@
 package sample.controller;
 
+import javafx.scene.Scene;
+
+import java.util.Random;
 import java.util.logging.Logger;
 
 /**
@@ -34,6 +37,20 @@ public class Commander {
             return false;
         }
         return true;
+    }
+
+    /**
+     * Function which decides and returns the next relevant scene which
+     * should be showed. Right now it switches randomly between two (no
+     * hardcoding of scenes).
+     * @return
+     */
+    public Scene decideScene() {
+        Random random = new Random();
+        if (random.nextInt(100) > 50) {
+            return controller.getView().getTitleScene();
+        }
+        return controller.getView().getMainQuestionScene();
     }
 
     /**
