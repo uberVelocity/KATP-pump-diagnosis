@@ -3,7 +3,6 @@ dialect  "mvel"
 import Pump;
 import Model;
 
-
 rule "Rules"
     when
         pump : Pump(pump.isVibrating() == true)
