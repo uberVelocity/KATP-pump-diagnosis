@@ -5,7 +5,7 @@ import Model;
 
 rule "Rules"
     when
-        pump : Pump(pump.isVibrating() == true)
+        item : Pump(item.isVibrating() == true)
     then
         System.out.println("The pump is vibrating");
 end

@@ -12,6 +12,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
         View view = new View(primaryStage);
         Model model = new Model();
         Controller controller = new Controller(model, view);
@@ -22,6 +23,9 @@ public class Main extends Application {
     as a JavaFX application. The app will call the method start().
      */
     public static void main(String[] args) {
+        KnowledgeBase kbase = readKnowledgeBase();
+        StatefulKnowledgeSession ksession = kbase.newStatefulKnowledgeSession();
+        KnowledgeRuntimeLogger logger = KnowledgeRuntimeLoggerFactory.newFileLogger(ksession, "test");
         launch(args);
     }
 }
