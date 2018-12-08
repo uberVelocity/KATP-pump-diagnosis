@@ -1,6 +1,5 @@
 package sample.drools;
 
-
 import org.drools.KnowledgeBase;
 import org.drools.KnowledgeBaseFactory;
 
