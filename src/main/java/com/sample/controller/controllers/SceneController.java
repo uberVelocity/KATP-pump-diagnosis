@@ -17,8 +17,8 @@ public class SceneController {
     public void setButtonActions() {
         logger.log(Level.WARNING, "SET BUTTON ACTIONS NOT IMPLEMENTED IN CALLED CONTROLLER");
     }
-
-    public void fadeTransition(Control control, int fadeDuration) {
+    
+    protected void fadeTransition(Control control, int fadeDuration) {
         FadeTransition ft = new FadeTransition(Duration.millis(fadeDuration), control);
         ft.setFromValue(0.0);
         ft.setToValue(1.0);

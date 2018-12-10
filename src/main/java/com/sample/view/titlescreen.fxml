@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<Pane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
-  <TextArea fx:id="textArea" visible="false" layoutX="250.0" layoutY="212.0" prefHeight="77.0" prefWidth="200.0" text="Centrifugal app&#10;-Made in JavaFX&#10;" />
-  <Button fx:id="nextButton" layoutX="611.0" layoutY="461.0" mnemonicParsing="false" text="Next scene" />
+<Pane prefHeight="500.0" prefWidth="700.0" stylesheets="@../resources/dark-theme.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+  <Button fx:id="nextButton" layoutX="304.0" layoutY="250.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="87.0" text="Start" />
+   <Label layoutX="62.0" layoutY="51.0" prefHeight="53.0" prefWidth="571.0" text="Centrifugal pump diagnosis system">
+      <font>
+         <Font size="36.0" />
+      </font>
+   </Label>
+   <Label layoutX="62.0" layoutY="112.0" prefHeight="85.0" prefWidth="598.0" text="This demo version uses the Drools API in order to perform inference on the pump. As of right now, the system is able to store the information of the pump within a knowledge base and update the information of the pump as the user answers questions. Inside the Sample.drl file, an example of a rule is written to showcase how we plan on developing all rules for the inference engine. " wrapText="true" />
 </Pane>

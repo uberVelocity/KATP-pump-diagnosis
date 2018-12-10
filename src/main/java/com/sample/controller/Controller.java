@@ -63,7 +63,6 @@ public class Controller {
         initializeFXMLControllers();
         callFXMLLoaders();
         setButtonActions();
-        displayTitleInterface();
     }
 
     /**
@@ -93,13 +92,6 @@ public class Controller {
         catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Makes visible the elements of title scene.
-     */
-    private void displayTitleInterface() {
-        titleController.displayInterface();
     }
 
     /**

@@ -31,10 +31,10 @@ public class AddInfoController extends SceneController {
     private Button noButton;
 
     @FXML
-    private Label noLabel;
+    private Label description;
 
     @FXML
-    private Label yesLabel;
+    private Label state;
 
     @FXML
     private TextArea textArea;
@@ -46,26 +46,7 @@ public class AddInfoController extends SceneController {
     public AddInfoController(Controller controller) {
         this.controller = controller;
     }
-
-
-    @FXML
-    public void setButtonActionPrevious() {
-        previousButton.setOnAction(e -> {
-            if(previousButton.getId().equals("button")) {
-                controller.getView().getPrimaryStage().setScene(controller.getView().getTitleScene());
-            }
-        });
-    }
-
-    @FXML
-    public void setButtonActionNext() {
-        nextButton.setOnAction(e -> {
-            if(nextButton.getId().equals("button2")) {
-                nextButton.setText("Stop touching me!");
-            }
-        });
-    }
-
+    
     /**
      * Set all action buttons.
      */
@@ -84,7 +65,8 @@ public class AddInfoController extends SceneController {
         });
         yesButton.setOnAction(e -> {
             if(yesButton.getId().equals("yesButton")) {
-                fadeTransition(yesLabel, 500);
+                state.setVisible(true);
+                state.setText("pump.isVibrating == true");
                 controller.getModel().getPump().check("isVibrating");
                 controller.getModel().getPump().setVibrating(true);
                 controller.getKsession().update(controller.getFactHandle(), controller.getModel().getPump());
@@ -93,7 +75,8 @@ public class AddInfoController extends SceneController {
         });
         noButton.setOnAction(e -> {
             if(noButton.getId().equals("noButton")) {
-                fadeTransition(noLabel, 500);
+            	state.setVisible(true);
+                state.setText("pump.isVibrating == false");
                 controller.getModel().getPump().check("isVibrating");
                 controller.getModel().getPump().setVibrating(false);
                 controller.getKsession().update(controller.getFactHandle(), controller.getModel().getPump());
@@ -103,8 +86,13 @@ public class AddInfoController extends SceneController {
     }
 
 
+
     public Controller getController() {
         return controller;
+    }
+    
+    public Label getDescription() {
+    	return description;
     }
 
 }

@@ -31,26 +31,18 @@ public class TitleController extends SceneController {
         this.controller = controller;
     }
 
-    public void displayInterface() {
-        fadeTransition(textArea, 700);
-        textArea.setVisible(true);
-    }
-
     public void setButtonActions() {
         logger.log(Level.INFO, "SET ACTIONS OF BUTTONS ...");
         nextButton.setOnAction(e -> {
             if(nextButton.getId().equals("nextButton")) {
                 controller.getView().getPrimaryStage().setScene(controller.getView().getAdditionalInfoScene());
+                fadeTransition(controller.getView().getAddInfoController().getDescription(), 700);
             }
         });
     }
 
     public Controller getController() {
         return controller;
-    }
-
-    public void requestInsertName() {
-
     }
 
 }

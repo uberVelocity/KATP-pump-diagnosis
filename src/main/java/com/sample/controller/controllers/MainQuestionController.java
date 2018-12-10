@@ -59,7 +59,6 @@ public class MainQuestionController extends SceneController{
             else {
                 controller.getView().getMainQuestionController().getWarningLabel().setText("RPM out of bounds");
                 fadeTransition(controller.getView().getMainQuestionController().getWarningLabel(), 700);
-                //controller.getModel().getPump().setRpm(Integer.parseInt(rpm));
                 controller.getModel().getPump().setVibrating(true);
                 controller.getKsession().update(controller.getFactHandle(), controller.getModel().getPump());
                 controller.getView().getMainQuestionController().getWarningLabel().setVisible(true);

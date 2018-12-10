@@ -10,11 +10,15 @@
    <Button fx:id="nextButton" layoutX="574.0" layoutY="442.0" mnemonicParsing="false" text="Next scene" />
    <Button fx:id="yesButton" layoutX="300.0" layoutY="250.0" mnemonicParsing="false" text="Yes" />
    <Button fx:id="noButton" layoutX="366.0" layoutY="250.0" mnemonicParsing="false" text="No" />
-   <Label fx:id="noLabel" layoutX="307.0" layoutY="340.0" text="You pressed no!" visible="false" />
-   <Label fx:id="yesLabel" layoutX="311.0" layoutY="306.0" text="You pressed yes!" visible="false" />
+   <Label fx:id="description" layoutX="260.0" layoutY="135.0" prefHeight="41.0" prefWidth="180.0" text="As you answer questions  the model of the pump gets updated." visible="false" wrapText="true" />
    <Label layoutX="215.0" layoutY="68.0" prefHeight="40.0" prefWidth="280.0" text="Is the pump vibrating?">
       <font>
          <Font size="28.0" />
+      </font>
+   </Label>
+   <Label fx:id="state" layoutX="259.0" layoutY="205.0" text="pump.isVibrating == true" visible="false">
+      <font>
+         <Font size="19.0" />
       </font>
    </Label>
 </Pane>
