@@ -1,0 +1,21 @@
+import com.sample.model.Pump;
+dialect  "java"
+
+rule "vibrating"
+    when
+        item : Pump(item.isVibrating() == true)
+    then
+        System.out.println("The pump is vibrating" + "; " + item.wasChecked("isVibrating"));
+        // fire appropriate question
+end
+
+rule "not-vibrating"
+	when
+		item : Pump(item.isVibrating() == false)
+	then
+        System.out.println("The pump is not vibrating" + "; " + item.wasChecked("isVibrating"));
+end
+
+		
+		
+		
