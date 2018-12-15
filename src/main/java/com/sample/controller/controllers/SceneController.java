@@ -25,4 +25,5 @@ public class SceneController {
         ft.play();
         control.setVisible(true);
     }
+
 }

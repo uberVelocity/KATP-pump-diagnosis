@@ -1,6 +1,14 @@
 package com.sample.model;
 import java.util.*;
 
+import com.sample.model.problems.BearingsDamaged;
+import com.sample.model.problems.Cavitation;
+import com.sample.model.problems.Debris;
+import com.sample.model.problems.PropellerDamaged;
+import com.sample.model.problems.Recirculation;
+import com.sample.model.problems.RodDamaged;
+import com.sample.model.problems.SealsDamaged;
+
 
 /**
  * Class which holds the information of the centrifugal pump.
@@ -10,21 +18,25 @@ public class Pump {
 	private HashMap checked;
 	
 	private boolean isOperating;
-    
+
 	private boolean isLeaking;
     private boolean isVibrating;
-    private boolean isClogged;
-    private boolean hasDebris;
+    private boolean highFreqVibration;
+    private boolean lowFrequencyVibration;
+    private boolean noises;
+    private boolean bumpNoises;
+    private boolean highNoises;
+    private boolean lowNoises;
     
-    private boolean suctionPressureAboveNPSH;
+    private boolean suctionPressureBelowNPSH;
+    private boolean suctionFlowBelowThreshold;
     private boolean exitFlowBelowThreshold;
+    private boolean exitPressureBelowThreshold;
+	private boolean exitParametersCloseTo0;
     private boolean highTemperature;
     private boolean propellerSpeedBelowThreshold;
-    
-    private Component propeller;
-    private Component seal;
-    private Component bearings;
-    private Component rod;
+    private boolean speedBelowNormal;
+	private boolean powerConsumptionAboveNormal;
 
     public Pump() {
     	checked = new HashMap();
@@ -37,8 +49,36 @@ public class Pump {
     public boolean wasChecked(String key) {
     	return checked.containsKey(key);
     }
-        
-    public boolean isOperating() {
+    
+	public boolean hasProblem(String problem) {
+		switch (problem) {
+			case "Cavitation" : 
+				return Cavitation.fitsModel(this);
+			case "Recirculation" :
+				return Recirculation.fitsModel(this);
+			case "SealsDamaged" :
+				return SealsDamaged.fitsModel(this);
+			case "RodDamaged" :
+				return RodDamaged.fitsModel(this);
+			case "Debris" :
+				return Debris.fitsModel(this);
+			case "PropellerDamaged" :
+				return PropellerDamaged.fitsModel(this);
+			case "BearingsDamaged" :
+				return BearingsDamaged.fitsModel(this);
+		}
+		return false;
+	}
+    
+	public HashMap getChecked() {
+		return checked;
+	}
+
+	public void setChecked(HashMap checked) {
+		this.checked = checked;
+	}
+
+	public boolean isOperating() {
 		return isOperating;
 	}
 
@@ -62,28 +102,68 @@ public class Pump {
 		this.isVibrating = isVibrating;
 	}
 
-	public boolean isClogged() {
-		return isClogged;
+	public boolean isHighFreqVibration() {
+		return highFreqVibration;
 	}
 
-	public void setClogged(boolean isClogged) {
-		this.isClogged = isClogged;
+	public void setHighFreqVibration(boolean highFreqVibration) {
+		this.highFreqVibration = highFreqVibration;
 	}
 
-	public boolean isHasDebris() {
-		return hasDebris;
+	public boolean isLowFrequencyVibration() {
+		return lowFrequencyVibration;
 	}
 
-	public void setHasDebris(boolean hasDebris) {
-		this.hasDebris = hasDebris;
+	public void setLowFrequencyVibration(boolean lowFrequencyVibration) {
+		this.lowFrequencyVibration = lowFrequencyVibration;
 	}
 
-	public boolean isSuctionPressureAboveNPSH() {
-		return suctionPressureAboveNPSH;
+	public boolean isNoises() {
+		return noises;
 	}
 
-	public void setSuctionPressureAboveNPSH(boolean suctionPressureAboveNPSH) {
-		this.suctionPressureAboveNPSH = suctionPressureAboveNPSH;
+	public void setNoises(boolean noises) {
+		this.noises = noises;
+	}
+
+	public boolean isBumpNoises() {
+		return bumpNoises;
+	}
+
+	public void setBumpNoises(boolean bumpNoises) {
+		this.bumpNoises = bumpNoises;
+	}
+
+	public boolean isHighNoises() {
+		return highNoises;
+	}
+
+	public void setHighNoises(boolean highNoises) {
+		this.highNoises = highNoises;
+	}
+
+	public boolean isLowNoises() {
+		return lowNoises;
+	}
+
+	public void setLowNoises(boolean lowNoises) {
+		this.lowNoises = lowNoises;
+	}
+
+	public boolean isSuctionPressureBelowNPSH() {
+		return suctionPressureBelowNPSH;
+	}
+
+	public void setSuctionPressureBelowNPSH(boolean suctionPressureBelowNPSH) {
+		this.suctionPressureBelowNPSH = suctionPressureBelowNPSH;
+	}
+
+	public boolean isSuctionFlowBelowThreshold() {
+		return suctionFlowBelowThreshold;
+	}
+
+	public void setSuctionFlowBelowThreshold(boolean suctionFlowBelowThreshold) {
+		this.suctionFlowBelowThreshold = suctionFlowBelowThreshold;
 	}
 
 	public boolean isExitFlowBelowThreshold() {
@@ -92,6 +172,14 @@ public class Pump {
 
 	public void setExitFlowBelowThreshold(boolean exitFlowBelowThreshold) {
 		this.exitFlowBelowThreshold = exitFlowBelowThreshold;
+	}
+
+	public boolean isExitParametersCloseTo0() {
+		return exitParametersCloseTo0;
+	}
+
+	public void setExitParametersCloseTo0(boolean exitParametersCloseTo0) {
+		this.exitParametersCloseTo0 = exitParametersCloseTo0;
 	}
 
 	public boolean isHighTemperature() {
@@ -106,41 +194,33 @@ public class Pump {
 		return propellerSpeedBelowThreshold;
 	}
 
-	public void setPropellerSpeed(boolean propellerSpeedBelowThreshold) {
+	public void setPropellerSpeedBelowThreshold(boolean propellerSpeedBelowThreshold) {
 		this.propellerSpeedBelowThreshold = propellerSpeedBelowThreshold;
 	}
-
-	public Component getPropeller() {
-		return propeller;
+	
+	public boolean isSpeedBelowNormal() {
+		return speedBelowNormal;
 	}
 
-	public void setPropeller(Component propeller) {
-		this.propeller = propeller;
+	public void setSpeedBelowNormal(boolean speedBelowNormal) {
+		this.speedBelowNormal = speedBelowNormal;
 	}
 
-	public Component getSeal() {
-		return seal;
+	public boolean isPowerConsumptionAboveNormal() {
+		return powerConsumptionAboveNormal;
 	}
 
-	public void setSeal(Component seal) {
-		this.seal = seal;
+	public void setPowerConsumptionAboveNormal(boolean powerConsumptionAboveNormal) {
+		this.powerConsumptionAboveNormal = powerConsumptionAboveNormal;
+	}
+	
+	public boolean isExitPressureBelowThreshold() {
+		return exitPressureBelowThreshold;
 	}
 
-	public Component getBearings() {
-		return bearings;
+	public void setExitPressureBelowThreshold(boolean exitPressureBelowThreshold) {
+		this.exitPressureBelowThreshold = exitPressureBelowThreshold;
 	}
 
-	public void setBearings(Component bearings) {
-		this.bearings = bearings;
-	}
-
-	public Component getRod() {
-		return rod;
-	}
-
-	public void setRod(Component rod) {
-		this.rod = rod;
-	}
-    
-    
+	
 }

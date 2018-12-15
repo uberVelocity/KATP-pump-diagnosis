@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 import com.sample.controller.controllers.AddInfoController;
 import com.sample.controller.controllers.MainQuestionController;
 import com.sample.controller.controllers.SceneController;
+import com.sample.controller.controllers.TemperatureController;
 import com.sample.controller.controllers.TitleController;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,14 +31,17 @@ public class View {
     private Parent titleScreenParent;
     private Parent additionalInfoParent;
     private Parent mainQuestionParent;
+    private Parent temperatureParent;
 
     private Scene titleScene;
     private Scene additionalInfoScene;
     private Scene mainQuestionScene;
+    private Scene temperatureScene;
 
     private TitleController titleController;
     private AddInfoController addInfoController;
     private MainQuestionController mainQuestionController;
+    private TemperatureController temperatureController;
 
     public View(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
@@ -54,6 +58,7 @@ public class View {
      */
     public void loadFXMLFiles(Stage primaryStage) throws Exception {
         logger.log(Level.INFO, "LOADING FXML FILES ...");
+        
         FXMLLoader loader = new FXMLLoader(getClass().getResource("titlescreen.fxml"));
         loader.setController(titleController);
         titleScreenParent = loader.load();
@@ -68,6 +73,11 @@ public class View {
         loader.setController(mainQuestionController);
         mainQuestionParent = loader.load();
         mainQuestionScene = new Scene(mainQuestionParent);
+        
+        loader = new FXMLLoader(getClass().getResource("temperature.fxml"));
+        loader.setController(temperatureController);
+        temperatureParent = loader.load();
+        temperatureScene = new Scene(temperatureParent);
 
         logger.log(Level.INFO, "FXML FILES LOADED ...");
 
@@ -129,5 +139,17 @@ public class View {
     public void setMainQuestionController(MainQuestionController mainQuestionController) {
         this.mainQuestionController = mainQuestionController;
     }
+    
+    public TemperatureController getTemperatureController() {
+    	return temperatureController;
+    }
 
+    public void setTemperatureController(TemperatureController temperatureController) {
+    	this.temperatureController = temperatureController;
+    }
+    
+    public Scene getTemperatureScene() {
+    	return temperatureScene;
+    }
+    
 }

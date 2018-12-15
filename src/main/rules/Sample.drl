@@ -1,21 +1,83 @@
 import com.sample.model.Pump;
+import com.sample.model.problems.*;
 dialect  "java"
 
 rule "vibrating"
     when
         item : Pump(item.isVibrating() == true)
     then
-        System.out.println("The pump is vibrating" + "; " + item.wasChecked("isVibrating"));
+        System.out.println("The pump is vibrating; " + item.wasChecked("isVibrating"));
         // fire appropriate question
+end
+
+rule "high-temperature"
+	when 
+		item : Pump(item.isHighTemperature() == true)
+	then
+		System.out.println("The pump is high");
 end
 
 rule "not-vibrating"
 	when
 		item : Pump(item.isVibrating() == false)
 	then
-        System.out.println("The pump is not vibrating" + "; " + item.wasChecked("isVibrating"));
+        System.out.println("The pump is not vibrating; " + item.wasChecked("isVibrating"));
 end
 
+rule "cavitation"
+	when
+		item : Pump(item.hasProblem("Cavitation"))
+	then 
+		System.out.println(Cavitation.getSolution());
+end
+
+rule "recirculation"
+	when
+		item : Pump(item.hasProblem("Recirculation"))
+	then
+		System.out.println(Recirculation.getSolution());
+end
+
+rule "sealsDamaged"
+	when
+		item : Pump(item.hasProblem("SealsDamaged"));
+	then
+		System.out.println(SealsDamaged.getSolution());
+end
+
+rule "rodDamaged"
+	when
+		item : Pump(item.hasProblem("RodDamaged"));
+	then
+		System.out.println(RodDamaged.getSolution());
+end
+
+rule "debris"
+	when
+		item : Pump(item.hasProblem("Debris"));
+	then
+		System.out.println(Debris.getSolution());
+end
+
+rule "propellerDamaged"
+	when
+		item : Pump(item.hasProblem("PropellerDamaged"));
+	then
+		System.out.println(PropellerDamaged.getSolution());
+end
+
+rule "bearingsDamaged"
+	when
+		item : Pump(item.hasProblem("BearingsDamaged"));
+	then
+		System.out.println(BearingsDamaged.getSolution());
+end
+
+rule "suctionBelowNPSH"
+	when
+		item : Pump(item.isSuctionPressureBelowNPSH())
+	then
+		System.out.println("It sucks way below NPSH");
 		
 		
 		

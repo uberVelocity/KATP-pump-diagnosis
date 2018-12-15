@@ -60,7 +60,7 @@ public class AddInfoController extends SceneController {
         });
         nextButton.setOnAction(e -> {
             if(nextButton.getId().equals("nextButton")) {
-                controller.getView().getPrimaryStage().setScene(controller.getView().getMainQuestionScene());
+                controller.getView().getPrimaryStage().setScene(controller.getTheRightScene());
             }
         });
         yesButton.setOnAction(e -> {
