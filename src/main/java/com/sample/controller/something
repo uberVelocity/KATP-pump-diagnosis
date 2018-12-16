@@ -1,0 +1,15 @@
+
+    private Parent titleScreenParent;
+    private Parent additionalInfoParent;
+    private Parent mainQuestionParent;
+    private Parent temperatureParent;
+    private Parent highFrequencyVibrationParent;
+    private Parent lowFrequencyVibrationParent;
+    private Parent noisesParent;
+    private Parent suctionPressureBelowNPSHParent;
+    private Parent suctionFlowBelowThresholdParent;
+    private Parent exitPressureBelowThresholdParent;
+    private Parent exitParametersCloseTo0Parent;
+    private Parent propellerSpeedBelowThresholdParent;
+    private Parent speedBelowNormalParent;
+    private Parent powerConsumptionAboveNormalParent;

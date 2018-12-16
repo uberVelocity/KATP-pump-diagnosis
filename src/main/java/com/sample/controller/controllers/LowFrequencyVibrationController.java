@@ -1,28 +1,21 @@
 package com.sample.controller.controllers;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import com.sample.controller.Controller;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import com.sample.controller.Controller;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-/**
- * Logical controller for the additional info scene.
- */
-public class AddInfoController extends SceneController {
-
-    public AddInfoController() {
-
-    }
-
-    public AddInfoController(Controller controller) {
-        this.controller = controller;
-    }
-    
+public class LowFrequencyVibrationController extends SceneController {
+	public LowFrequencyVibrationController(Controller controller) {
+		this.controller = controller;
+	}
 	
+
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     private Controller controller;
@@ -85,16 +78,6 @@ public class AddInfoController extends SceneController {
                 controller.getKsession().fireAllRules();
             }
         });
-    }
-
-
-
-    public Controller getController() {
-        return controller;
-    }
-    
-    public Label getDescription() {
-    	return description;
     }
 
 }

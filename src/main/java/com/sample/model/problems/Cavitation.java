@@ -7,12 +7,12 @@ import com.sample.model.Pump;
 public class Cavitation implements Problem {
 	
 	private static String description = "This is the description of cavitation!!";
-	private static String solution = "This is the solution for cavitation!!";
+	private static String solution = "This is the solution for cavitation!! (also check seals)";
+	
+	private static String[] conditions = {"suctionPressureBelowNPSH"};
 	
 	public static boolean fitsModel(Pump pump) {
-		return (pump.wasChecked("isVibrating") && pump.isVibrating())
-			&& (pump.wasChecked("highTemperature") && pump.isHighTemperature())
-			&& (pump.wasChecked("suctionAboveNPSH") && pump.isSuctionPressureAboveNPSH());
+		return (pump.wasChecked("suctionPressureBelowNPSH") && pump.isSuctionPressureBelowNPSH());
 	}
 	
 	public static String getDescription() {
@@ -21,6 +21,10 @@ public class Cavitation implements Problem {
 	
 	public static String getSolution() {
 		return solution;
+	}
+	
+	public static String[] getConditions() {
+		return conditions;
 	}
 	
 }

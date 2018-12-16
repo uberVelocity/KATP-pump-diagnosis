@@ -1,11 +1,36 @@
 package com.sample.controller;
-
+import javafx.scene.Scene;
 import com.sample.controller.controllers.AddInfoController;
+import com.sample.controller.controllers.BumpNoisesController;
+import com.sample.controller.controllers.ExitFlowBelowThresholdController;
+import com.sample.controller.controllers.ExitParametersCloseTo0Controller;
+import com.sample.controller.controllers.ExitPressureBelowThresholdController;
+import com.sample.controller.controllers.HighFrequencyVibrationController;
+import com.sample.controller.controllers.HighNoisesController;
+import com.sample.controller.controllers.IsLeakingController;
+import com.sample.controller.controllers.LowFrequencyVibrationController;
+import com.sample.controller.controllers.LowNoisesController;
 import com.sample.controller.controllers.MainQuestionController;
+import com.sample.controller.controllers.NoisesController;
+import com.sample.controller.controllers.PowerConsumptionAboveNormalController;
+import com.sample.controller.controllers.PropellerSpeedBelowThresholdController;
+import com.sample.controller.controllers.SpeedBelowNormalController;
+import com.sample.controller.controllers.SuctionFlowBelowThresholdController;
+import com.sample.controller.controllers.SuctionPressureBelowNPSHController;
 import com.sample.controller.controllers.TitleController;
+import com.sample.controller.controllers.TemperatureController;
 import com.sample.model.Model;
+import com.sample.model.problems.BearingsDamaged;
+import com.sample.model.problems.Cavitation;
+import com.sample.model.problems.Debris;
+import com.sample.model.problems.PropellerDamaged;
+import com.sample.model.problems.Recirculation;
+import com.sample.model.problems.RodDamaged;
+import com.sample.model.problems.SealsDamaged;
 import com.sample.view.View;
 
+import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,6 +55,8 @@ import org.drools.io.ResourceFactory;
 public class Controller {
 
     private Logger logger = Logger.getLogger(this.getClass().getName());
+    
+    private HashMap<String, Scene> qMap = new HashMap<String, Scene>();
 
     private View view;
     private Model model;
@@ -39,7 +66,23 @@ public class Controller {
     private AddInfoController addInfoController;
     private TitleController titleController;
     private MainQuestionController mainQuestionController;
-
+    private TemperatureController temperatureController;
+    private IsLeakingController isLeakingController;
+    private HighFrequencyVibrationController highFrequencyVibrationController;
+    private LowFrequencyVibrationController lowFrequencyVibrationController;
+    private NoisesController noisesController;
+    private LowNoisesController lowNoisesController;
+    private HighNoisesController highNoisesController;
+    private BumpNoisesController bumpNoisesController;
+    private SuctionPressureBelowNPSHController suctionPressureBelowNPSHController;
+    private SuctionFlowBelowThresholdController suctionFlowBelowThresholdController;
+    private ExitFlowBelowThresholdController exitFlowBelowThresholdController;
+    private ExitPressureBelowThresholdController exitPressureBelowThresholdController;
+    private ExitParametersCloseTo0Controller exitParametersCloseTo0Controller; 
+    private PropellerSpeedBelowThresholdController propellerSpeedBelowThresholdController;
+    private SpeedBelowNormalController speedBelowNormalController;
+    private PowerConsumptionAboveNormalController powerConsumptionAboveNormalController;
+    
     private KnowledgeBase kbase;
 	private StatefulKnowledgeSession ksession;
     private KnowledgeRuntimeLogger knowledgeLogger;
@@ -63,21 +106,127 @@ public class Controller {
         initializeFXMLControllers();
         callFXMLLoaders();
         setButtonActions();
+        initializeHashmap();
     }
 
+    public void initializeHashmap() {
+    	qMap.put("highTemperature", getView().getTemperatureScene());
+    	qMap.put("isVibrating", getView().getAdditionalInfoScene());
+    	qMap.put("noises", getView().getNoisesScene());
+    	qMap.put("lowNoises", getView().getLowNoisesScene());
+    	qMap.put("highNoises", getView().getHighNoisesScene());
+    	qMap.put("bumpNoises", getView().getBumpNoisesScene());
+    	qMap.put("suctionPressureBelowNPSH", getView().getSuctionPressureBelowNPSHScene());
+    	qMap.put("speedBelowNormal", getView().getPropellerSpeedBelowThresholdScene());
+    	qMap.put("powerConsumptionAboveNormal", getView().getPowerConsumptionAboveNormalScene());
+    	qMap.put("exitFlowBelowThreshold", getView().getExitFlowBelowThresholdScene());
+    	qMap.put("exitPressureBelowThreshold", getView().getExitPressureBelowThresholdScene());
+    	qMap.put("exitParametersCloseTo0", getView().getExitParametersCloseTo0Scene());
+    	qMap.put("suctionFlowBelowThreshold", getView().getSuctionFlowBelowThresholdScene());
+    	qMap.put("isLeaking", getView().getIsLeakingScene());
+
+    }
+    //TODO 
+    public Scene getTheRightScene() {
+    	Scene bestScene;
+    	int factsNeeded = 999;
+    	HashMap<String, Integer> decisionMap = new HashMap<String, Integer>();
+    	decisionMap.put("highTemperature", 0);
+    	decisionMap.put("isVibrating", 0);
+    	decisionMap.put("noises", 0);
+    	decisionMap.put("lowNoises", 0);
+    	decisionMap.put("highNoises", 0);
+    	decisionMap.put("bumpNoises", 0);
+    	decisionMap.put("suctionPressureBelowNPSH", 0);
+    	decisionMap.put("speedBelowNormal", 0);
+    	decisionMap.put("powerConsumptionAboveNormal", 0);
+    	decisionMap.put("exitFlowBelowThreshold", 0);
+    	decisionMap.put("exitPressureBelowThreshold", 0);
+    	decisionMap.put("exitParametersCloseTo0", 0);
+    	decisionMap.put("suctionFlowBelowThreshold", 0);
+    	decisionMap.put("isLeaking", 0);
+    	
+    	dealWithProblems(decisionMap, BearingsDamaged.getConditions());
+    	dealWithProblems(decisionMap, Cavitation.getConditions());
+    	dealWithProblems(decisionMap, Debris.getConditions());
+    	dealWithProblems(decisionMap, PropellerDamaged.getConditions());
+    	dealWithProblems(decisionMap, Recirculation.getConditions());
+    	dealWithProblems(decisionMap, RodDamaged.getConditions());
+    	dealWithProblems(decisionMap, SealsDamaged.getConditions());
+
+    	String maxCondition = "";
+    	int max = -1;
+    	for(Entry<String, Integer> entry : decisionMap.entrySet()) {
+    		if(max<entry.getValue()) {
+    			max= entry.getValue();
+    			maxCondition = entry.getKey();
+    		}
+    	}
+    	return qMap.get(maxCondition);
+    	
+    }
+    
+    public void dealWithProblems(HashMap<String, Integer> decisionMap, String[] conditions) {
+    	
+    	int k=0;
+    	for(String condition : conditions) {
+    		if(!getModel().getPump().wasChecked(condition)) k++;
+    	}
+    	
+    	for(String condition : conditions) {
+    		if(!getModel().getPump().wasChecked(condition)) 
+    			decisionMap.replace(condition, decisionMap.get(condition)+(100/k));
+    		
+    	}
+    }
+    
+    
     /**
      * Creates instances of controllers that handle logic of FXML files
      * and binds the controllers to the FXLM files. It is important that
      * this is done before the FXML files are loaded into the program.
      */
     private void initializeFXMLControllers() {
-        addInfoController = new AddInfoController(this);
-        titleController = new TitleController(this);
-        mainQuestionController = new MainQuestionController(this);
-
+		addInfoController = new AddInfoController(this);
+		titleController = new TitleController(this);
+		mainQuestionController = new MainQuestionController(this);
+		temperatureController = new TemperatureController(this);
+		
+		isLeakingController = new IsLeakingController(this);
+		highFrequencyVibrationController = new HighFrequencyVibrationController(this);
+		lowFrequencyVibrationController = new LowFrequencyVibrationController(this);
+		noisesController = new NoisesController(this);
+		suctionPressureBelowNPSHController = new SuctionPressureBelowNPSHController(this);
+		suctionFlowBelowThresholdController = new SuctionFlowBelowThresholdController(this);
+		exitFlowBelowThresholdController = new ExitFlowBelowThresholdController(this);
+		exitPressureBelowThresholdController = new ExitPressureBelowThresholdController(this);
+		exitParametersCloseTo0Controller = new ExitParametersCloseTo0Controller(this); 
+		propellerSpeedBelowThresholdController = new PropellerSpeedBelowThresholdController(this);
+		speedBelowNormalController = new SpeedBelowNormalController(this);
+		powerConsumptionAboveNormalController = new PowerConsumptionAboveNormalController(this);
+		highNoisesController = new HighNoisesController(this);
+		lowNoisesController = new LowNoisesController(this);
+		bumpNoisesController = new BumpNoisesController(this);
+		
         view.setTitleController(titleController);
         view.setAddInfoController(addInfoController);
         view.setMainQuestionController(mainQuestionController);
+        view.setTemperatureController(temperatureController);
+        view.setExitFlowBelowThresholdController(exitFlowBelowThresholdController);
+        view.setExitParametersCloseTo0Controller(exitParametersCloseTo0Controller);
+        view.setHighFrequencyVibrationController(highFrequencyVibrationController);
+        view.setExitPressureBelowThresholdController(exitPressureBelowThresholdController);
+        view.setLowFrequencyVibrationController(lowFrequencyVibrationController);
+        view.setPowerConsumptionAboveNormalController(powerConsumptionAboveNormalController);
+        view.setSpeedBelowNormalController(speedBelowNormalController);
+        view.setNoisesController(noisesController);
+        view.setPropellerSpeedBelowThresholdController(propellerSpeedBelowThresholdController);
+        view.setHighNoisesController(highNoisesController);
+        view.setLowNoisesController(lowNoisesController);
+        view.setBumpNoisesController(bumpNoisesController);
+        view.setIsLeakingController(isLeakingController);
+        view.setSuctionPressureBelowNPSHController(suctionPressureBelowNPSHController);
+        view.setSuctionFlowBelowThresholdController(suctionFlowBelowThresholdController);
     }
     
     /**
@@ -103,6 +252,22 @@ public class Controller {
         titleController.setButtonActions();
         addInfoController.setButtonActions();
         mainQuestionController.setButtonActions();
+        temperatureController.setButtonActions();
+        powerConsumptionAboveNormalController.setButtonActions();
+        isLeakingController.setButtonActions();
+		highFrequencyVibrationController.setButtonActions();
+		lowFrequencyVibrationController.setButtonActions();
+		noisesController.setButtonActions();
+		suctionPressureBelowNPSHController.setButtonActions();
+		suctionFlowBelowThresholdController.setButtonActions();
+		exitFlowBelowThresholdController.setButtonActions();
+		exitPressureBelowThresholdController.setButtonActions();
+		exitParametersCloseTo0Controller.setButtonActions();
+		propellerSpeedBelowThresholdController.setButtonActions();
+		speedBelowNormalController.setButtonActions();
+		highNoisesController.setButtonActions();
+		lowNoisesController.setButtonActions();
+		bumpNoisesController.setButtonActions();
 
         logger.log(Level.INFO, "BUTTON ACTIONS INITIALIZED ...");
     }
@@ -173,4 +338,6 @@ public class Controller {
 	public FactHandle getFactHandle() {
 		return factHandle;
 	}
+	
+	
 }

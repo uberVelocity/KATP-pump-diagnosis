@@ -6,6 +6,8 @@ import javafx.util.Duration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.sample.controller.Controller;
+
 /**
  * !TODO: Decide based on the inference made by the system which scene to be set.
  */
@@ -14,6 +16,8 @@ public class SceneController {
 
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
+    protected Controller controller;
+    
     public void setButtonActions() {
         logger.log(Level.WARNING, "SET BUTTON ACTIONS NOT IMPLEMENTED IN CALLED CONTROLLER");
     }
@@ -25,4 +29,13 @@ public class SceneController {
         ft.play();
         control.setVisible(true);
     }
+
+    public Controller getController() {
+    	return controller;
+    }
+    
+    public void setController(Controller controller) {
+    	this.controller = controller;
+    }
+    
 }

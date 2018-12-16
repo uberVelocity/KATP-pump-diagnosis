@@ -1,28 +1,22 @@
 package com.sample.controller.controllers;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import com.sample.controller.Controller;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import com.sample.controller.Controller;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+public class ExitParametersCloseTo0Controller extends SceneController {
 
-/**
- * Logical controller for the additional info scene.
- */
-public class AddInfoController extends SceneController {
-
-    public AddInfoController() {
-
-    }
-
-    public AddInfoController(Controller controller) {
-        this.controller = controller;
-    }
-    
+	public ExitParametersCloseTo0Controller (Controller controller) {
+		this.controller = controller;
+	}
 	
+
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     private Controller controller;
@@ -67,34 +61,19 @@ public class AddInfoController extends SceneController {
         });
         yesButton.setOnAction(e -> {
             if(yesButton.getId().equals("yesButton")) {
-                state.setVisible(true);
-                state.setText("pump.isVibrating == true");
-                controller.getModel().getPump().check("isVibrating");
-                controller.getModel().getPump().setVibrating(true);
+                controller.getModel().getPump().check("exitParametersCloseTo0");
+                controller.getModel().getPump().setExitParametersCloseTo0(true);
                 controller.getKsession().update(controller.getFactHandle(), controller.getModel().getPump());
                 controller.getKsession().fireAllRules();
             }
         });
         noButton.setOnAction(e -> {
             if(noButton.getId().equals("noButton")) {
-            	state.setVisible(true);
-                state.setText("pump.isVibrating == false");
-                controller.getModel().getPump().check("isVibrating");
-                controller.getModel().getPump().setVibrating(false);
+                controller.getModel().getPump().check("exitParametersCloseTo0");
+                controller.getModel().getPump().setExitParametersCloseTo0(false);
                 controller.getKsession().update(controller.getFactHandle(), controller.getModel().getPump());
                 controller.getKsession().fireAllRules();
             }
         });
     }
-
-
-
-    public Controller getController() {
-        return controller;
-    }
-    
-    public Label getDescription() {
-    	return description;
-    }
-
 }
