@@ -9,8 +9,8 @@ Currently, the system is capable of storing knowledge regarding the pump in a kn
 Please find attached to this submission a runnable jar file as well as screenshots with the system in the case that you encounter issues running the system. Should you encounter issues running the jar file we will be at the tutorial on Wednesday (12.12.2018) to showcase the system.
 
 #### TODO
-1. Perform backward/forward chaining in Drools in order to attach salience on questions after updating the model at each step in order to decide which question to ask.
-2. Create remaining rules in Drools. (should be done after T.A. discussion)
+1. Refactor view classes.
+2. Validate system with expert.
 
 #### Screenshots
 ![titlescreen](https://raw.githubusercontent.com/uberVelocity/KATP-pump-diagnosis/development/titlescreen.png)
