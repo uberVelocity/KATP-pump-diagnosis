@@ -1,0 +1,116 @@
+import com.sample.model.Pump;
+import com.sample.model.problems.*;
+dialect  "java"
+
+
+
+rule "exit-zero-parameters"
+	when 
+		item : Pump(item.isExitParametersCloseTo0() == true)
+	then
+		item.check("exitPressureBelowThreshold");
+		item.check("exitFlowBelowThreshold");
+		item.setExitPressureBelowThreshold(true);
+		item.setExitFlowBelowThreshold(true);
+end
+
+rule "high-noises"
+	when
+		item : Pump(item.wasChecked("highNoises")==true, item.isHighNoises()==true)
+	then
+		item.check("noises");
+		item.setNoises(true);
+end
+
+rule "low-noises"
+	when
+		item : Pump(item.wasChecked("lowNoises")==true, item.isLowNoises()==true)
+	then
+		item.check("noises");
+		item.setNoises(true);
+end
+
+rule "bump-noises"
+	when
+		item : Pump(item.wasChecked("bumpNoises")==true, item.isBumpNoises()==true)
+	then
+		item.check("noises");
+		item.setNoises(true);
+end
+
+rule "no-noises"
+	when 
+		item : Pump(item.wasChecked("noises")==true, item.isNoises()==false)
+	then
+		item.check("bumpNoises");
+		item.check("lowNoises");
+		item.check("highNoises");
+		item.setBumpNoises(false);
+		item.setHighNoises(false);
+		item.setLowNoises(false);
+end
+
+rule "cavitation"
+	when
+		item : Pump(item.hasProblem("Cavitation"))
+	then 
+		System.out.println(Cavitation.getSolution());
+end
+
+rule "is-leaking"
+	when
+		item : Pump(item.isLeaking() == true)
+	then
+		System.out.println("Leaky");
+end
+
+rule "recirculation"
+	when
+		item : Pump(item.hasProblem("Recirculation"))
+	then
+		System.out.println(Recirculation.getSolution());
+end
+
+rule "sealsDamaged"
+	when
+		item : Pump(item.hasProblem("SealsDamaged"));
+	then
+		System.out.println(SealsDamaged.getSolution());
+end
+
+rule "rodDamaged"
+	when
+		item : Pump(item.hasProblem("RodDamaged"));
+	then
+		System.out.println(RodDamaged.getSolution());
+end
+
+rule "debris"
+	when
+		item : Pump(item.hasProblem("Debris"));
+	then
+		System.out.println(Debris.getSolution());
+end
+
+rule "propellerDamaged"
+	when
+		item : Pump(item.hasProblem("PropellerDamaged"));
+	then
+		System.out.println(PropellerDamaged.getSolution());
+end
+
+rule "bearingsDamaged"
+	when
+		item : Pump(item.hasProblem("BearingsDamaged"));
+	then
+		System.out.println(BearingsDamaged.getSolution());
+end
+
+rule "suctionBelowNPSH"
+	when
+		item : Pump(item.isSuctionPressureBelowNPSH())
+	then
+		System.out.println("It sucks way below NPSH");
+end
+		
+		

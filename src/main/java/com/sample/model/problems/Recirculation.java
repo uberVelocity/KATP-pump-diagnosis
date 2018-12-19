@@ -3,8 +3,8 @@ package com.sample.model.problems;
 import com.sample.model.Pump;
 
 public class Recirculation implements Problem{
-	private static String description = "This is the description of Internal Recirculation!!";
-	private static String solution = "This is the solution for Internal Recirculation!!";
+	private static String description = "This is the description of Internal Recirculation!";
+	private static String solution = "This is the solution for Internal Recirculation!";
 	
 	private static String[] conditions = {"suctionFlowBelowThreshold", "noises", "bumpNoises"};
 	

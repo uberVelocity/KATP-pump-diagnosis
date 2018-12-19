@@ -3,8 +3,8 @@ package com.sample.model.problems;
 import com.sample.model.Pump;
 
 public class PropellerDamaged implements Problem{
-	private static String description = "This is the description of YOUR Propeller ARE DAMAGED M8!!";
-	private static String solution = "This is the solution for YOUR Propeller ARE DAMAGED M8!!";
+	private static String description = "This is the description of damaged-propeller!";
+	private static String solution = "This is the solution for damaged-propeller!";
 	
 	private static String[] conditions = {"exitFlowBelowThreshold", "exitPressureBelowThreshold", "exitParametersCloseTo0"};
 	

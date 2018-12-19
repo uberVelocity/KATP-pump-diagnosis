@@ -3,8 +3,8 @@ package com.sample.model.problems;
 import com.sample.model.Pump;
 
 public class RodDamaged implements Problem{
-	private static String description = "This is the description of YOUR RRRRRRod AREIS DAMAGED M8!!";
-	private static String solution = "This is the solution for YOUR RRRRRRod ISARE DAMAGED M8!!";
+	private static String description = "This is the description of damaged-rod!";
+	private static String solution = "This is the solution for damaged-rod!";
 	
 	private static String[] conditions = {"exitPressureBelowThreshold", "exitFlowBelowThreshold", "exitParametersCloseTo0"};
 

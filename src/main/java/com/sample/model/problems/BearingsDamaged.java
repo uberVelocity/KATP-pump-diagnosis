@@ -3,8 +3,8 @@ package com.sample.model.problems;
 import com.sample.model.Pump;
 
 public class BearingsDamaged implements Problem{
-	private static String description = "This is the description of YOUR CEILS ARE DAMAGED M8!!";
-	private static String solution = "This is the solution for YOUR CEILS ARE DAMAGED M8!!";
+	private static String description = "This is the description of damaged-bearings!";
+	private static String solution = "This is the solution for damaged-bearings!";
 	
 	private static String[] conditions = {"isVibrating", "highTemperature", "noises", "lowNoises"};
 	
