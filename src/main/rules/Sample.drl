@@ -4,7 +4,7 @@ dialect  "java"
 
 
 
-rule "rule1"
+rule "exit-zero-parameters"
 	when 
 		item : Pump(item.isExitParametersCloseTo0() == true)
 	then
@@ -14,7 +14,7 @@ rule "rule1"
 		item.setExitFlowBelowThreshold(true);
 end
 
-rule "rule2"
+rule "high-noises"
 	when
 		item : Pump(item.wasChecked("highNoises")==true, item.isHighNoises()==true)
 	then
@@ -22,7 +22,7 @@ rule "rule2"
 		item.setNoises(true);
 end
 
-rule "rule3"
+rule "low-noises"
 	when
 		item : Pump(item.wasChecked("lowNoises")==true, item.isLowNoises()==true)
 	then
@@ -30,7 +30,7 @@ rule "rule3"
 		item.setNoises(true);
 end
 
-rule "rule4"
+rule "bump-noises"
 	when
 		item : Pump(item.wasChecked("bumpNoises")==true, item.isBumpNoises()==true)
 	then
@@ -38,46 +38,16 @@ rule "rule4"
 		item.setNoises(true);
 end
 
-rule "rule5"
+rule "no-noises"
 	when 
 		item : Pump(item.wasChecked("noises")==true, item.isNoises()==false)
 	then
-	    System.out.println("I AM HERRRREEE");
 		item.check("bumpNoises");
 		item.check("lowNoises");
 		item.check("highNoises");
 		item.setBumpNoises(false);
 		item.setHighNoises(false);
 		item.setLowNoises(false);
-end
-
-rule "debug"
-	when
-		item : Pump(item.isExitPressureBelowThreshold() == true)
-	then
-		System.out.println("IT IS WORKING BOIZ");
-end
-
-rule "vibrating"
-    when
-        item : Pump(item.isVibrating() == true)
-    then
-        System.out.println("");
-        // fire appropriate question
-end
-
-rule "high-temperature"
-	when 
-		item : Pump(item.isHighTemperature() == true)
-	then
-		System.out.println("");
-end
-
-rule "not-vibrating"
-	when
-		item : Pump(item.isVibrating() == false)
-	then
-        System.out.println("");
 end
 
 rule "cavitation"
