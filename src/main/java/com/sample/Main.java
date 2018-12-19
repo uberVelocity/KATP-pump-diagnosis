@@ -8,7 +8,7 @@ import com.sample.model.Model;
 import com.sample.view.View;
 
 
-public class DroolsTest extends Application {
+public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {

@@ -1,21 +1,28 @@
 package com.sample.controller.controllers;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import com.sample.controller.Controller;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import com.sample.controller.Controller;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ * Logical controller for the additional info scene.
+ */
 public class IsVibratingController extends SceneController {
-	public IsVibratingController  (Controller controller) {
-		this.controller = controller;
-	}
-	
 
+    public IsVibratingController() {
+
+    }
+
+    public IsVibratingController(Controller controller) {
+        this.controller = controller;
+    }
+    
+	
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     private Controller controller;
@@ -79,4 +86,15 @@ public class IsVibratingController extends SceneController {
             }
         });
     }
+
+
+
+    public Controller getController() {
+        return controller;
+    }
+    
+    public Label getDescription() {
+    	return description;
+    }
+
 }

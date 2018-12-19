@@ -1,20 +1,17 @@
 package com.sample.controller;
 import javafx.scene.Scene;
-import com.sample.controller.controllers.AddInfoController;
+import com.sample.controller.controllers.IsVibratingController;
 import com.sample.controller.controllers.BumpNoisesController;
 import com.sample.controller.controllers.ExitFlowBelowThresholdController;
 import com.sample.controller.controllers.ExitParametersCloseTo0Controller;
 import com.sample.controller.controllers.ExitPressureBelowThresholdController;
-import com.sample.controller.controllers.HighFrequencyVibrationController;
 import com.sample.controller.controllers.HighNoisesController;
 import com.sample.controller.controllers.IsLeakingController;
-import com.sample.controller.controllers.LowFrequencyVibrationController;
 import com.sample.controller.controllers.LowNoisesController;
 import com.sample.controller.controllers.MainQuestionController;
 import com.sample.controller.controllers.NoisesController;
 import com.sample.controller.controllers.PowerConsumptionAboveNormalController;
 import com.sample.controller.controllers.PropellerSpeedBelowThresholdController;
-import com.sample.controller.controllers.SpeedBelowNormalController;
 import com.sample.controller.controllers.SuctionFlowBelowThresholdController;
 import com.sample.controller.controllers.SuctionPressureBelowNPSHController;
 import com.sample.controller.controllers.TitleController;
@@ -63,13 +60,11 @@ public class Controller {
     private Commander commander;
 
     /* Controller classes that handle logic of FXML files. */
-    private AddInfoController addInfoController;
+    private IsVibratingController isVibratingController;
     private TitleController titleController;
     private MainQuestionController mainQuestionController;
     private TemperatureController temperatureController;
     private IsLeakingController isLeakingController;
-    private HighFrequencyVibrationController highFrequencyVibrationController;
-    private LowFrequencyVibrationController lowFrequencyVibrationController;
     private NoisesController noisesController;
     private LowNoisesController lowNoisesController;
     private HighNoisesController highNoisesController;
@@ -80,7 +75,6 @@ public class Controller {
     private ExitPressureBelowThresholdController exitPressureBelowThresholdController;
     private ExitParametersCloseTo0Controller exitParametersCloseTo0Controller; 
     private PropellerSpeedBelowThresholdController propellerSpeedBelowThresholdController;
-    private SpeedBelowNormalController speedBelowNormalController;
     private PowerConsumptionAboveNormalController powerConsumptionAboveNormalController;
     
     private KnowledgeBase kbase;
@@ -131,6 +125,7 @@ public class Controller {
     	Scene bestScene;
     	int factsNeeded = 999;
     	HashMap<String, Integer> decisionMap = new HashMap<String, Integer>();
+    	
     	decisionMap.put("highTemperature", 0);
     	decisionMap.put("isVibrating", 0);
     	decisionMap.put("noises", 0);
@@ -187,14 +182,11 @@ public class Controller {
      * this is done before the FXML files are loaded into the program.
      */
     private void initializeFXMLControllers() {
-		addInfoController = new AddInfoController(this);
+		isVibratingController = new IsVibratingController(this);
 		titleController = new TitleController(this);
 		mainQuestionController = new MainQuestionController(this);
 		temperatureController = new TemperatureController(this);
-		
 		isLeakingController = new IsLeakingController(this);
-		highFrequencyVibrationController = new HighFrequencyVibrationController(this);
-		lowFrequencyVibrationController = new LowFrequencyVibrationController(this);
 		noisesController = new NoisesController(this);
 		suctionPressureBelowNPSHController = new SuctionPressureBelowNPSHController(this);
 		suctionFlowBelowThresholdController = new SuctionFlowBelowThresholdController(this);
@@ -202,23 +194,19 @@ public class Controller {
 		exitPressureBelowThresholdController = new ExitPressureBelowThresholdController(this);
 		exitParametersCloseTo0Controller = new ExitParametersCloseTo0Controller(this); 
 		propellerSpeedBelowThresholdController = new PropellerSpeedBelowThresholdController(this);
-		speedBelowNormalController = new SpeedBelowNormalController(this);
 		powerConsumptionAboveNormalController = new PowerConsumptionAboveNormalController(this);
 		highNoisesController = new HighNoisesController(this);
 		lowNoisesController = new LowNoisesController(this);
 		bumpNoisesController = new BumpNoisesController(this);
 		
         view.setTitleController(titleController);
-        view.setAddInfoController(addInfoController);
+        view.setAddInfoController(isVibratingController);
         view.setMainQuestionController(mainQuestionController);
         view.setTemperatureController(temperatureController);
         view.setExitFlowBelowThresholdController(exitFlowBelowThresholdController);
         view.setExitParametersCloseTo0Controller(exitParametersCloseTo0Controller);
-        view.setHighFrequencyVibrationController(highFrequencyVibrationController);
         view.setExitPressureBelowThresholdController(exitPressureBelowThresholdController);
-        view.setLowFrequencyVibrationController(lowFrequencyVibrationController);
         view.setPowerConsumptionAboveNormalController(powerConsumptionAboveNormalController);
-        view.setSpeedBelowNormalController(speedBelowNormalController);
         view.setNoisesController(noisesController);
         view.setPropellerSpeedBelowThresholdController(propellerSpeedBelowThresholdController);
         view.setHighNoisesController(highNoisesController);
@@ -250,13 +238,11 @@ public class Controller {
      */
     private void setButtonActions() {
         titleController.setButtonActions();
-        addInfoController.setButtonActions();
+        isVibratingController.setButtonActions();
         mainQuestionController.setButtonActions();
         temperatureController.setButtonActions();
         powerConsumptionAboveNormalController.setButtonActions();
         isLeakingController.setButtonActions();
-		highFrequencyVibrationController.setButtonActions();
-		lowFrequencyVibrationController.setButtonActions();
 		noisesController.setButtonActions();
 		suctionPressureBelowNPSHController.setButtonActions();
 		suctionFlowBelowThresholdController.setButtonActions();
@@ -264,7 +250,6 @@ public class Controller {
 		exitPressureBelowThresholdController.setButtonActions();
 		exitParametersCloseTo0Controller.setButtonActions();
 		propellerSpeedBelowThresholdController.setButtonActions();
-		speedBelowNormalController.setButtonActions();
 		highNoisesController.setButtonActions();
 		lowNoisesController.setButtonActions();
 		bumpNoisesController.setButtonActions();
@@ -288,8 +273,8 @@ public class Controller {
     }
 
     
-    public AddInfoController getAddInfoController() {
-        return addInfoController;
+    public IsVibratingController getAddInfoController() {
+        return isVibratingController;
     }
 
     public TitleController getTitleController() {

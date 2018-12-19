@@ -10,7 +10,7 @@
     <Button fx:id="nextButton" layoutX="574.0" layoutY="442.0" mnemonicParsing="false" text="Next scene" />
     <Button fx:id="yesButton" layoutX="300.0" layoutY="250.0" mnemonicParsing="false" text="Yes" />
     <Button fx:id="noButton" layoutX="366.0" layoutY="250.0" mnemonicParsing="false" text="No" />
-    <Label layoutX="30.0" layoutY="32.0" prefHeight="100.0" prefWidth="648.0" text="Is the suction pressure below NPSH?" wrapText="true">
+    <Label layoutX="122.0" layoutY="61.0" prefHeight="40.0" prefWidth="462.0" text="Is the suction pressure below NPSH?" wrapText="true">
       <font>
          <Font size="28.0" />
       </font>

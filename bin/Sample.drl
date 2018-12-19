@@ -57,13 +57,6 @@ rule "cavitation"
 		System.out.println(Cavitation.getSolution());
 end
 
-rule "is-leaking"
-	when
-		item : Pump(item.isLeaking() == true)
-	then
-		System.out.println("Leaky");
-end
-
 rule "recirculation"
 	when
 		item : Pump(item.hasProblem("Recirculation"))

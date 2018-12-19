@@ -10,7 +10,7 @@ import java.util.logging.Logger;
  * should we need it. (was used in Food Tracking app in order to
  * change username, change weight, calories etc...). We may still
  * need it depending on the number of parameters a centrifugal pump
- * has.
+ * has. RIGHT NOW COMMANDER IS NOT USED
  */
 public class Commander {
 
