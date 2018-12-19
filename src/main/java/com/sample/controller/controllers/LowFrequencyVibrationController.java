@@ -11,11 +11,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
 public class LowFrequencyVibrationController extends SceneController {
+	
 	public LowFrequencyVibrationController(Controller controller) {
 		this.controller = controller;
 	}
 	
-
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     private Controller controller;

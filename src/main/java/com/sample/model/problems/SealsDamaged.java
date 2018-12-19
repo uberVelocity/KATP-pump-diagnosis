@@ -3,8 +3,8 @@ package com.sample.model.problems;
 import com.sample.model.Pump;
 
 public class SealsDamaged implements Problem{
-	private static String description = "This is the description of YOUR CEILS ARE DAMAGED M8!!";
-	private static String solution = "This is the solution for YOUR CEILS ARE DAMAGED M8!!";
+	private static String description = "This is the description of damaged-seals!";
+	private static String solution = "This is the solution damaged-seals!";
 	
 	private static String[] conditions = {"isLeaking"};
 
