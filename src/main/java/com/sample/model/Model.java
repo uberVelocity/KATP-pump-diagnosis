@@ -3,7 +3,7 @@ package com.sample.model;
 import com.sample.model.Pump;
 
 /**
- * The model of the program. It has a pump. Deal with it.
+ * The model of the program consists of the pump.
  */
 public class Model {
 

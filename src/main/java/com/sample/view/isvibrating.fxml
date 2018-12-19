@@ -11,7 +11,7 @@
    <Button fx:id="yesButton" layoutX="300.0" layoutY="250.0" mnemonicParsing="false" text="Yes" />
    <Button fx:id="noButton" layoutX="366.0" layoutY="250.0" mnemonicParsing="false" text="No" />
    <Label fx:id="description" layoutX="260.0" layoutY="135.0" prefHeight="41.0" prefWidth="180.0" text="As you answer questions  the model of the pump gets updated." visible="false" wrapText="true" />
-   <Label layoutX="215.0" layoutY="68.0" prefHeight="40.0" prefWidth="280.0" text="Is the pump vibrating?">
+   <Label layoutX="215.0" layoutY="61.0" prefHeight="41.0" prefWidth="280.0" text="Is the pump vibrating?">
       <font>
          <Font size="28.0" />
       </font>
