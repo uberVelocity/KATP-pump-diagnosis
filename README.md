@@ -11,6 +11,7 @@ Please find attached to this submission a runnable jar file as well as screensho
 #### TODO
 1. Refactor view classes.
 2. Validate system with expert.
+3. USE STACK to switch scenes (next, previous)
 
 #### Screenshots
 ![titlescreen](https://raw.githubusercontent.com/uberVelocity/KATP-pump-diagnosis/development/titlescreen.png)
