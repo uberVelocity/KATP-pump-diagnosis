@@ -6,11 +6,11 @@ public class Recirculation implements Problem{
 	private static String description = "This is the description of Internal Recirculation!";
 	private static String solution = "This is the solution for Internal Recirculation!";
 	
-	private static String[] conditions = {"suctionFlowBelowThreshold", "noises", "bumpNoises"};
+	private static String[] conditions = {"suctionFlowBelowThreshold", "bumpNoises"};
 	
 	public static boolean fitsModel(Pump pump) {
 		return (pump.wasChecked("suctionFlowBelowThreshold") && pump.isSuctionFlowBelowThreshold())
-			&& (pump.wasChecked("noises") && pump.isNoises())
+			//&& (pump.wasChecked("noises") && pump.isNoises())
 			&& (pump.wasChecked("bumpNoises") && pump.isBumpNoises());
 	}
 	

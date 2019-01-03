@@ -9,7 +9,7 @@ public class RodDamaged implements Problem{
 	private static String[] conditions = {"exitPressureBelowThreshold", "exitFlowBelowThreshold", "exitParametersCloseTo0"};
 
 	public static boolean fitsModel(Pump pump) {
-		return pump.wasChecked("exitPressureBelowThreshold") && !pump.isExitPressureBelowThreshold() &&
+		return pump.wasChecked("exitPressureBelowThreshold") && pump.isExitPressureBelowThreshold() &&
 			   pump.wasChecked("exitFlowBelowThreshold") && pump.isExitFlowBelowThreshold() && 
 			   pump.wasChecked("exitParametersCloseTo0") && pump.isExitParametersCloseTo0();
 	}

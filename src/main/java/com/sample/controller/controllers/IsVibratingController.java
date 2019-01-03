@@ -40,9 +40,6 @@ public class IsVibratingController extends SceneController {
     private Button noButton;
 
     @FXML
-    private Label description;
-
-    @FXML
     private Label state;
 
     @FXML
@@ -86,15 +83,9 @@ public class IsVibratingController extends SceneController {
             }
         });
     }
-
-
-
+    
     public Controller getController() {
         return controller;
-    }
-    
-    public Label getDescription() {
-    	return description;
     }
 
 }

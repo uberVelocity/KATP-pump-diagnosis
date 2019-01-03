@@ -10,8 +10,7 @@
    <Button fx:id="nextButton" layoutX="574.0" layoutY="442.0" mnemonicParsing="false" text="Next scene" />
    <Button fx:id="yesButton" layoutX="300.0" layoutY="250.0" mnemonicParsing="false" text="Yes" />
    <Button fx:id="noButton" layoutX="366.0" layoutY="250.0" mnemonicParsing="false" text="No" />
-   <Label fx:id="description" layoutX="260.0" layoutY="135.0" prefHeight="41.0" prefWidth="180.0" text="As you answer questions  the model of the pump gets updated." visible="false" wrapText="true" />
-   <Label layoutX="215.0" layoutY="61.0" prefHeight="41.0" prefWidth="280.0" text="Is the pump vibrating?">
+   <Label layoutX="92.0" layoutY="64.0" prefHeight="41.0" prefWidth="548.0" text="Is the pump vibration over the normal limit?">
       <font>
          <Font size="28.0" />
       </font>
