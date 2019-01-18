@@ -2,8 +2,6 @@ import com.sample.model.Pump;
 import com.sample.model.problems.*;
 dialect  "java"
 
-
-
 rule "exit-zero-parameters"
 	when 
 		item : Pump(item.isExitParametersCloseTo0() == true)

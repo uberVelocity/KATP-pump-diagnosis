@@ -40,9 +40,6 @@ public class IsVibratingController extends SceneController {
     private Button noButton;
 
     @FXML
-    private Label state;
-
-    @FXML
     private TextArea textArea;
 
 
@@ -64,8 +61,6 @@ public class IsVibratingController extends SceneController {
         });
         yesButton.setOnAction(e -> {
             if(yesButton.getId().equals("yesButton")) {
-                state.setVisible(true);
-                state.setText("pump.isVibrating == true");
                 controller.getModel().getPump().check("isVibrating");
                 controller.getModel().getPump().setVibrating(true);
                 controller.getKsession().update(controller.getFactHandle(), controller.getModel().getPump());
@@ -74,8 +69,6 @@ public class IsVibratingController extends SceneController {
         });
         noButton.setOnAction(e -> {
             if(noButton.getId().equals("noButton")) {
-            	state.setVisible(true);
-                state.setText("pump.isVibrating == false");
                 controller.getModel().getPump().check("isVibrating");
                 controller.getModel().getPump().setVibrating(false);
                 controller.getKsession().update(controller.getFactHandle(), controller.getModel().getPump());

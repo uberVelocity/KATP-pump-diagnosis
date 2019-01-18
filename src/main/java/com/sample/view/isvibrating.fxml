@@ -15,9 +15,4 @@
          <Font size="28.0" />
       </font>
    </Label>
-   <Label fx:id="state" layoutX="259.0" layoutY="205.0" text="pump.isVibrating == true" visible="false">
-      <font>
-         <Font size="19.0" />
-      </font>
-   </Label>
 </Pane>
