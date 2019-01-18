@@ -2,9 +2,9 @@ package com.sample.model.problems;
 
 import com.sample.model.Pump;
 
-public class BearingsDamaged implements Problem{
-	private static String description = "This is the description of damaged-bearings!";
-	private static String solution = "This is the solution for damaged-bearings!";
+public class BearingsDamaged extends Problem {
+	private static String description = "The bearings of the pump are damaged.";
+	private static String solution = "First stop the pump, then change the bearings of the pump.";
 	
 	private static String[] conditions = {"isVibrating", "lowNoises"};
 	

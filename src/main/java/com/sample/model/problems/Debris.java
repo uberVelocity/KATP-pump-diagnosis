@@ -2,9 +2,9 @@ package com.sample.model.problems;
 
 import com.sample.model.Pump;
 
-public class Debris implements Problem{
-	private static String description = "This is the description of Debris!!";
-	private static String solution = "This is the solution for Debris!!";
+public class Debris extends Problem{
+	private static String description = "The pump has debris clogged within it.";
+	private static String solution = "Turn off the pump and clean the debris.";
 	
 	private static String[] conditions = {"speedBelowNormal", "powerConsumptionAboveNormal"};
 	

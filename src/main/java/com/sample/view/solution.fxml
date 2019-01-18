@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../resources/dark-theme.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER" layoutX="15.0" layoutY="195.0" prefHeight="199.0" prefWidth="572.0">
+         <children>
+            <Label prefHeight="64.0" prefWidth="356.0" text="SOLUTION">
+               <font>
+                  <Font size="43.0" />
+               </font>
+            </Label>
+            <Label fx:id="solution" prefHeight="199.0" prefWidth="445.0" text="Increase suction pressure of the pump. As soon as possible, turn off the pump and check the condition of the propeller and other components of the pump." textAlignment="JUSTIFY" wrapText="true">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="15.0" layoutY="14.0" prefHeight="199.0" prefWidth="572.0">
+         <children>
+            <Label prefHeight="64.0" prefWidth="356.0" text="PROBLEM">
+               <font>
+                  <Font size="43.0" />
+               </font>
+            </Label>
+            <Label fx:id="description" prefHeight="199.0" prefWidth="445.0" text="The pump is exhibiting cavitation." textAlignment="JUSTIFY" wrapText="true">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+</Pane>

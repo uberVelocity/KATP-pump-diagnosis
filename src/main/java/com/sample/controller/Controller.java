@@ -20,11 +20,13 @@ import com.sample.model.Model;
 import com.sample.model.problems.BearingsDamaged;
 import com.sample.model.problems.Cavitation;
 import com.sample.model.problems.Debris;
+import com.sample.model.problems.Problem;
 import com.sample.model.problems.PropellerDamaged;
 import com.sample.model.problems.Recirculation;
 import com.sample.model.problems.RodDamaged;
 import com.sample.model.problems.SealsDamaged;
 import com.sample.view.View;
+import com.sample.controller.controllers.SolutionController;
 
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -76,6 +78,7 @@ public class Controller {
     private ExitParametersCloseTo0Controller exitParametersCloseTo0Controller; 
     private PropellerSpeedBelowThresholdController propellerSpeedBelowThresholdController;
     private PowerConsumptionAboveNormalController powerConsumptionAboveNormalController;
+    private SolutionController solutionController;
     
     private KnowledgeBase kbase;
 	private StatefulKnowledgeSession ksession;
@@ -118,10 +121,18 @@ public class Controller {
     	qMap.put("exitParametersCloseTo0", getView().getExitParametersCloseTo0Scene());
     	qMap.put("suctionFlowBelowThreshold", getView().getSuctionFlowBelowThresholdScene());
     	qMap.put("isLeaking", getView().getIsLeakingScene());
-
+    }
+    
+    public Scene getSolutionScene(String problemDescription, String problemSolution) {
+    	solutionController.setDescription(problemDescription);
+    	solutionController.setSolution(problemSolution);
+    	return view.getSolutionScene();
     }
     //TODO 
     public Scene getTheRightScene() {
+    	if(model.getPump().getProblemDescription() != null) {
+    		return getSolutionScene(model.getPump().getProblemDescription(), model.getPump().getProblemSolution());
+    	}
     	Scene bestScene;
     	int factsNeeded = 999;
     	HashMap<String, Integer> decisionMap = new HashMap<String, Integer>();
@@ -198,6 +209,7 @@ public class Controller {
 		highNoisesController = new HighNoisesController(this);
 		lowNoisesController = new LowNoisesController(this);
 		bumpNoisesController = new BumpNoisesController(this);
+		solutionController = new SolutionController(this);
 		
         view.setTitleController(titleController);
         view.setAddInfoController(isVibratingController);
@@ -215,6 +227,7 @@ public class Controller {
         view.setIsLeakingController(isLeakingController);
         view.setSuctionPressureBelowNPSHController(suctionPressureBelowNPSHController);
         view.setSuctionFlowBelowThresholdController(suctionFlowBelowThresholdController);
+        view.setSolutionController(solutionController);
     }
     
     /**

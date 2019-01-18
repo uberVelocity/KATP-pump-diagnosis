@@ -56,6 +56,8 @@ rule "cavitation"
 	when
 		item : Pump(item.hasProblem("Cavitation"))
 	then 
+		item.setProblemDescription(Cavitation.getDescription());
+		item.setProblemSolution(Cavitation.getSolution());
 		System.out.println(Cavitation.getSolution());
 end
 
@@ -63,6 +65,8 @@ rule "recirculation"
 	when
 		item : Pump(item.hasProblem("Recirculation"))
 	then
+		item.setProblemDescription(Recirculation.getDescription());
+		item.setProblemSolution(Recirculation.getSolution());
 		System.out.println(Recirculation.getSolution());
 end
 
@@ -70,6 +74,8 @@ rule "sealsDamaged"
 	when
 		item : Pump(item.hasProblem("SealsDamaged"));
 	then
+		item.setProblemDescription(SealsDamaged.getDescription());
+		item.setProblemSolution(SealsDamaged.getSolution());
 		System.out.println(SealsDamaged.getSolution());
 end
 
@@ -77,6 +83,8 @@ rule "rodDamaged"
 	when
 		item : Pump(item.hasProblem("RodDamaged"));
 	then
+		item.setProblemDescription(RodDamaged.getDescription());
+		item.setProblemSolution(RodDamaged.getSolution());
 		System.out.println(RodDamaged.getSolution());
 end
 
@@ -84,6 +92,9 @@ rule "debris"
 	when
 		item : Pump(item.hasProblem("Debris"));
 	then
+		item.setProblemDescription(Debris.getDescription());
+		item.setProblemSolution(Debris.getSolution());
+
 		System.out.println(Debris.getSolution());
 end
 
@@ -91,6 +102,8 @@ rule "propellerDamaged"
 	when
 		item : Pump(item.hasProblem("PropellerDamaged"));
 	then
+		item.setProblemDescription(PropellerDamaged.getDescription());
+		item.setProblemSolution(PropellerDamaged.getSolution());
 		System.out.println(PropellerDamaged.getSolution());
 end
 
@@ -98,6 +111,8 @@ rule "bearingsDamaged"
 	when
 		item : Pump(item.hasProblem("BearingsDamaged"));
 	then
+		item.setProblemDescription(BearingsDamaged.getDescription());
+		item.setProblemSolution(BearingsDamaged.getSolution());
 		System.out.println(BearingsDamaged.getSolution());
 end
 
