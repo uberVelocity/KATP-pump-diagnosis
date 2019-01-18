@@ -10,10 +10,9 @@ public class RodDamaged extends Problem{
 
 	public static boolean fitsModel(Pump pump) {
 		return pump.wasChecked("exitPressureBelowThreshold") && pump.isExitPressureBelowThreshold() &&
-			   pump.wasChecked("exitFlowBelowThreshold") && pump.isExitFlowBelowThreshold() && 
+			   pump.wasChecked("exitFlowBelowThreshold") && pump.isExitFlowBelowThreshold() &&
 			   pump.wasChecked("exitParametersCloseTo0") && pump.isExitParametersCloseTo0();
 	}
-	
 	
 	public static String getDescription() {
 		return description;

@@ -133,6 +133,9 @@ public class Controller {
     	if(model.getPump().getProblemDescription() != null) {
     		return getSolutionScene(model.getPump().getProblemDescription(), model.getPump().getProblemSolution());
     	}
+    	if(model.getPump().getChecked().size() >= 11) {
+    		return getSolutionScene("There is no problem with the pump.", "The pump is fine.");
+    	}
     	Scene bestScene;
     	int factsNeeded = 999;
     	HashMap<String, Integer> decisionMap = new HashMap<String, Integer>();
