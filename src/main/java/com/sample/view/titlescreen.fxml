@@ -12,5 +12,8 @@
          <Font size="36.0" />
       </font>
    </Label>
-   <Label layoutX="62.0" layoutY="112.0" prefHeight="85.0" prefWidth="598.0" text="This demo version uses the Drools API in order to perform inference on the pump. As of right now, the system is able to store the information of the pump within a knowledge base and update the information of the pump as the user answers questions. Inside the Sample.drl file, an example of a rule is written to showcase how we plan on developing all rules for the inference engine. " wrapText="true" />
+   <Label layoutX="62.0" layoutY="112.0" prefHeight="85.0" prefWidth="598.0" text="This is an expert system developed for the diagnosis of centrifugal pumps. It is made for civil engineers as well as plant engineers to insure the working quality of each centrifugal pump found on site." wrapText="true">
+      <font>
+         <Font size="16.0" />
+      </font></Label>
 </Pane>
