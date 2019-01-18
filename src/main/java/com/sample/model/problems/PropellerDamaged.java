@@ -2,9 +2,9 @@ package com.sample.model.problems;
 
 import com.sample.model.Pump;
 
-public class PropellerDamaged implements Problem{
-	private static String description = "This is the description of damaged-propeller!";
-	private static String solution = "This is the solution for damaged-propeller!";
+public class PropellerDamaged extends Problem{
+	private static String description = "The pump's propeller is damaged.";
+	private static String solution = "Turn off the pump and check the condition of the propeller. Fix or replace if necessary.";
 	
 	private static String[] conditions = {"exitFlowBelowThreshold", "exitPressureBelowThreshold", "exitParametersCloseTo0"};
 	

@@ -10,7 +10,7 @@
     <Button fx:id="nextButton" layoutX="574.0" layoutY="442.0" mnemonicParsing="false" text="Next scene" />
     <Button fx:id="yesButton" layoutX="300.0" layoutY="250.0" mnemonicParsing="false" text="Yes" />
     <Button fx:id="noButton" layoutX="366.0" layoutY="250.0" mnemonicParsing="false" text="No" />
-    <Label layoutX="113.0" layoutY="61.0" prefHeight="41.0" prefWidth="507.0" text="Is the exit pressure below the threshold?" wrapText="true">
+    <Label layoutX="113.0" layoutY="64.0" prefHeight="81.0" prefWidth="507.0" text="Is the exit pressure below the normal level?" wrapText="true">
       <font>
          <Font size="28.0" />
       </font>

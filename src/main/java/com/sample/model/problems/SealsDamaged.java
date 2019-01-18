@@ -2,9 +2,9 @@ package com.sample.model.problems;
 
 import com.sample.model.Pump;
 
-public class SealsDamaged implements Problem{
-	private static String description = "This is the description of damaged-seals!";
-	private static String solution = "This is the solution damaged-seals!";
+public class SealsDamaged extends Problem{
+	private static String description = "The seals of the pump are damaged.";
+	private static String solution = "Turn off pump and replace any broken seals.";
 	
 	private static String[] conditions = {"isLeaking"};
 

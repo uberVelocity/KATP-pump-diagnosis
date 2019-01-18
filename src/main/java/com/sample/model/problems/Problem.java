@@ -4,17 +4,17 @@ import java.util.HashMap;
 
 import com.sample.model.Pump;
 
-public interface Problem {
+public class Problem {
 	
-	static boolean fitsModel(Pump pump) {
+	public static boolean fitsModel(Pump pump) {
 		return true;
 	}
 	
-	static String getDescription() {
+	public static String getDescription() {
 		return "Default description";
 	}
 	
-	static String getSolution() {
+	public static String getSolution() {
 		return "Default solution";
 	}
 

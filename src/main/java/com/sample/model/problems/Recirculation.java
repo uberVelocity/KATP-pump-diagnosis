@@ -2,15 +2,16 @@ package com.sample.model.problems;
 
 import com.sample.model.Pump;
 
-public class Recirculation implements Problem{
-	private static String description = "This is the description of Internal Recirculation!";
-	private static String solution = "This is the solution for Internal Recirculation!";
+public class Recirculation extends Problem{
+	private static String description = "The pump is exhibiting internal recirculation. This will lead to cavitation.";
+	private static String solution = "Increase suction flow until it is above minimum flow. When possible, or if the situation persists"
+			+ ", turn off the pump"
+			+ " and check the condition of seals, propeller and bearings.";
 	
-	private static String[] conditions = {"suctionFlowBelowThreshold", "noises", "bumpNoises"};
+	private static String[] conditions = {"suctionFlowBelowThreshold", "bumpNoises"};
 	
 	public static boolean fitsModel(Pump pump) {
 		return (pump.wasChecked("suctionFlowBelowThreshold") && pump.isSuctionFlowBelowThreshold())
-			&& (pump.wasChecked("noises") && pump.isNoises())
 			&& (pump.wasChecked("bumpNoises") && pump.isBumpNoises());
 	}
 	

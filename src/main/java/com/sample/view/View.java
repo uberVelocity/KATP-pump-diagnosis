@@ -16,6 +16,7 @@ import com.sample.controller.controllers.MainQuestionController;
 import com.sample.controller.controllers.NoisesController;
 import com.sample.controller.controllers.PowerConsumptionAboveNormalController;
 import com.sample.controller.controllers.PropellerSpeedBelowThresholdController;
+import com.sample.controller.controllers.SolutionController;
 import com.sample.controller.controllers.SuctionFlowBelowThresholdController;
 import com.sample.controller.controllers.SuctionPressureBelowNPSHController;
 import com.sample.controller.controllers.TitleController;
@@ -39,6 +40,7 @@ public class View {
 
     private Stage primaryStage;
 
+    private Parent solutionParent;
     private Parent titleScreenParent;
     private Parent additionalInfoParent;
     private Parent mainQuestionParent;
@@ -59,6 +61,7 @@ public class View {
     private Parent lowNoisesParent;
     private Parent bumpNoisesParent;
 
+    private Scene solutionScene;
 	private Scene titleScene;
     private Scene additionalInfoScene;
     private Scene mainQuestionScene;
@@ -79,6 +82,7 @@ public class View {
     private Scene lowNoisesScene;
     private Scene bumpNoisesScene;
     
+    private SolutionController solutionController;
     private TitleController titleController;
     private IsVibratingController isVibratingController;
     private MainQuestionController mainQuestionController;
@@ -187,6 +191,11 @@ public class View {
         loader.setController(bumpNoisesController);
         bumpNoisesParent = loader.load();
         bumpNoisesScene = new Scene(bumpNoisesParent);
+        
+        loader = new FXMLLoader(getClass().getResource("solution.fxml"));
+        loader.setController(solutionController);
+        solutionParent = loader.load();
+        solutionScene = new Scene(solutionParent);
         
         logger.log(Level.INFO, "FXML FILES LOADED ...");
 
@@ -337,6 +346,10 @@ public class View {
 		this.titleScene = titleScene;
 	}
 
+	public void setSolutionController(SolutionController solutionController) {
+		this.solutionController = solutionController;
+	}
+	
 	public void setAdditionalInfoScene(Scene additionalInfoScene) {
 		this.additionalInfoScene = additionalInfoScene;
 	}
@@ -525,5 +538,9 @@ public class View {
     
     public View(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
+    }
+    
+    public Scene getSolutionScene() {
+    	return solutionScene;
     }
 }

@@ -4,6 +4,7 @@ import java.util.*;
 import com.sample.model.problems.BearingsDamaged;
 import com.sample.model.problems.Cavitation;
 import com.sample.model.problems.Debris;
+import com.sample.model.problems.Problem;
 import com.sample.model.problems.PropellerDamaged;
 import com.sample.model.problems.Recirculation;
 import com.sample.model.problems.RodDamaged;
@@ -14,6 +15,9 @@ import com.sample.model.problems.SealsDamaged;
  * Class which holds the information of the centrifugal pump.
  */
 public class Pump {	
+	
+	private String problemDescription;
+	private String problemSolution;
 	
 	private HashMap checked;
 	
@@ -40,6 +44,8 @@ public class Pump {
 
     public Pump() {
     	checked = new HashMap();
+    	problemDescription = null;
+    	problemSolution = null;
     }
     
     public void check(String key) {
@@ -94,6 +100,23 @@ public class Pump {
 		this.isLeaking = isLeaking;
 	}
 
+	public String getProblemDescription() {
+		return problemDescription;
+	}
+
+	public void setProblemDescription(String problemDescription) {
+		this.problemDescription = problemDescription;
+	}
+
+	public String getProblemSolution() {
+		return problemSolution;
+	}
+
+	public void setProblemSolution(String problemSolution) {
+		this.problemSolution = problemSolution;
+	}
+
+	
 	public boolean isVibrating() {
 		return isVibrating;
 	}
@@ -102,6 +125,8 @@ public class Pump {
 		this.isVibrating = isVibrating;
 	}
 
+	
+	
 	public boolean isHighFreqVibration() {
 		return highFreqVibration;
 	}
@@ -221,6 +246,4 @@ public class Pump {
 	public void setExitPressureBelowThreshold(boolean exitPressureBelowThreshold) {
 		this.exitPressureBelowThreshold = exitPressureBelowThreshold;
 	}
-
-	
 }

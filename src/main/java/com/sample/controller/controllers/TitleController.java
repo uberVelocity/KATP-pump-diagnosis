@@ -36,7 +36,6 @@ public class TitleController extends SceneController {
         nextButton.setOnAction(e -> {
             if(nextButton.getId().equals("nextButton")) {
                 controller.getView().getPrimaryStage().setScene(controller.getView().getAdditionalInfoScene());
-                fadeTransition(controller.getView().getAddInfoController().getDescription(), 700);
             }
         });
     }

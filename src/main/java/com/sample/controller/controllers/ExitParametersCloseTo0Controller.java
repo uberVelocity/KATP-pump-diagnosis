@@ -62,7 +62,11 @@ public class ExitParametersCloseTo0Controller extends SceneController {
         yesButton.setOnAction(e -> {
             if(yesButton.getId().equals("yesButton")) {
                 controller.getModel().getPump().check("exitParametersCloseTo0");
+                controller.getModel().getPump().check("exitPressureBelowThreshold");
+                controller.getModel().getPump().check("exitFlowBelowThreshold");
                 controller.getModel().getPump().setExitParametersCloseTo0(true);
+                controller.getModel().getPump().setExitPressureBelowThreshold(true);
+                controller.getModel().getPump().setExitFlowBelowThreshold(true);
                 controller.getKsession().update(controller.getFactHandle(), controller.getModel().getPump());
                 controller.getKsession().fireAllRules();
             }
