@@ -7,7 +7,8 @@ public class Debris extends Problem{
 	private static String solution = "Turn off the pump and clean the debris.";
 	
 	private static String[] conditions = {"speedBelowNormal", "powerConsumptionAboveNormal"};
-	
+	private static boolean[] vals = {true, true};
+
 	public static boolean fitsModel(Pump pump) {
 		return (pump.wasChecked("speedBelowNormal") && pump.isSpeedBelowNormal())
 			&& (pump.wasChecked("powerConsumptionAboveNormal") && pump.isPowerConsumptionAboveNormal());
@@ -23,5 +24,8 @@ public class Debris extends Problem{
 	
 	public static String[] getConditions() {
 		return conditions;
+	}
+	public static boolean[] getVals() {
+		return vals;
 	}
 }

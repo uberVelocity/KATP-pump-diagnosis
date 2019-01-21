@@ -9,7 +9,7 @@ public class Recirculation extends Problem{
 			+ " and check the condition of seals, propeller and bearings.";
 	
 	private static String[] conditions = {"suctionFlowBelowThreshold", "bumpNoises"};
-	
+	private static boolean[] vals = {true, true};
 	public static boolean fitsModel(Pump pump) {
 		return (pump.wasChecked("suctionFlowBelowThreshold") && pump.isSuctionFlowBelowThreshold())
 			&& (pump.wasChecked("bumpNoises") && pump.isBumpNoises());
@@ -26,5 +26,8 @@ public class Recirculation extends Problem{
 	
 	public static String[] getConditions() {
 		return conditions;
+	}
+	public static boolean[] getVals() {
+		return vals;
 	}
 }

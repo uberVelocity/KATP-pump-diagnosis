@@ -7,6 +7,7 @@ public class SealsDamaged extends Problem{
 	private static String solution = "Turn off pump and replace any broken seals.";
 	
 	private static String[] conditions = {"isLeaking"};
+	private static boolean[] vals = {true};
 
 	public static boolean fitsModel(Pump pump) {
 		return pump.wasChecked("isLeaking") && pump.isLeaking();
@@ -23,4 +24,9 @@ public class SealsDamaged extends Problem{
 	public static String[] getConditions() {
 		return conditions;
 	}
+	
+	public static boolean[] getVals() {
+		return vals;
+	}
+	
 }

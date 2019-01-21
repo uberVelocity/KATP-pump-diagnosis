@@ -76,6 +76,23 @@ public class Pump {
 		return false;
 	}
     
+	public boolean getCondition(String condition) {
+		switch(condition) {
+			case "isVibrating" : return isVibrating();
+			case "lowNoises" : return isLowNoises();
+			case "suctionPressureBelowNPSH" : return isSuctionPressureBelowNPSH();
+			case "speedBelowNormal" : return isSpeedBelowNormal();
+			case "powerConsumptionAboveNormal" : return isPowerConsumptionAboveNormal();
+			case "exitFlowBelowThreshold" : return isExitFlowBelowThreshold();
+			case "exitPressureBelowThreshold" : return isExitPressureBelowThreshold();
+			case "exitParametersCloseTo0" : return isExitParametersCloseTo0();
+			case "suctionFlowBelowThreshold" : return isSuctionFlowBelowThreshold();
+			case "bumpNoises" : return isBumpNoises();
+			case "isLeaking" : return isLeaking();
+		}
+		return false;
+	}
+	
 	public HashMap getChecked() {
 		return checked;
 	}

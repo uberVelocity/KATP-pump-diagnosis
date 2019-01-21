@@ -11,7 +11,8 @@ public class Cavitation extends Problem {
 			+ " check the condition of the propeller and other components of the pump.";
 	
 	private static String[] conditions = {"suctionPressureBelowNPSH"};
-	
+	private static boolean[] vals = {true};
+
 	public static boolean fitsModel(Pump pump) {
 		return (pump.wasChecked("suctionPressureBelowNPSH") && pump.isSuctionPressureBelowNPSH());
 	}
@@ -26,6 +27,9 @@ public class Cavitation extends Problem {
 	
 	public static String[] getConditions() {
 		return conditions;
+	}
+	public static boolean[] getVals() {
+		return vals;
 	}
 	
 }

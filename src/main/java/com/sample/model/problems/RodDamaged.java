@@ -7,6 +7,7 @@ public class RodDamaged extends Problem{
 	private static String solution = "Turn off the pump and check the condition of the rod. Fix or replace if necessary.";
 	
 	private static String[] conditions = {"exitPressureBelowThreshold", "exitFlowBelowThreshold", "exitParametersCloseTo0"};
+	private static boolean[] vals = {true, true, true};
 
 	public static boolean fitsModel(Pump pump) {
 		return pump.wasChecked("exitPressureBelowThreshold") && pump.isExitPressureBelowThreshold() &&
@@ -24,5 +25,8 @@ public class RodDamaged extends Problem{
 	
 	public static String[] getConditions() {
 		return conditions;
+	}
+	public static boolean[] getVals() {
+		return vals;
 	}
 }

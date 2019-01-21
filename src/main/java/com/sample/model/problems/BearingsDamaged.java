@@ -7,7 +7,7 @@ public class BearingsDamaged extends Problem {
 	private static String solution = "First stop the pump, then change the bearings of the pump.";
 	
 	private static String[] conditions = {"isVibrating", "lowNoises"};
-	
+	private static boolean[] vals = {true, true};
 	public static boolean fitsModel(Pump pump) {
 		return(pump.wasChecked("isVibrating") && pump.isVibrating())
 			&&(pump.wasChecked("lowNoises") && pump.isLowNoises());
@@ -23,5 +23,8 @@ public class BearingsDamaged extends Problem {
 	
 	public static String[] getConditions() {
 		return conditions;
+	}
+	public static boolean[] getVals() {
+		return vals;
 	}
 }

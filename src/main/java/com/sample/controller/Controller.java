@@ -155,13 +155,13 @@ public class Controller {
     	decisionMap.put("suctionFlowBelowThreshold", 0);
     	decisionMap.put("isLeaking", 0);
     	
-    	dealWithProblems(decisionMap, BearingsDamaged.getConditions());
-    	dealWithProblems(decisionMap, Cavitation.getConditions());
-    	dealWithProblems(decisionMap, Debris.getConditions());
-    	dealWithProblems(decisionMap, PropellerDamaged.getConditions());
-    	dealWithProblems(decisionMap, Recirculation.getConditions());
-    	dealWithProblems(decisionMap, RodDamaged.getConditions());
-    	dealWithProblems(decisionMap, SealsDamaged.getConditions());
+    	dealWithProblems(decisionMap, BearingsDamaged.getConditions(), BearingsDamaged.getVals());
+    	dealWithProblems(decisionMap, Cavitation.getConditions(), Cavitation.getVals());
+    	dealWithProblems(decisionMap, Debris.getConditions(), Debris.getVals());
+    	dealWithProblems(decisionMap, PropellerDamaged.getConditions(), PropellerDamaged.getVals());
+    	dealWithProblems(decisionMap, Recirculation.getConditions(), Recirculation.getVals());
+    	dealWithProblems(decisionMap, RodDamaged.getConditions(), RodDamaged.getVals());
+    	dealWithProblems(decisionMap, SealsDamaged.getConditions(), SealsDamaged.getVals());
 
     	String maxCondition = "";
     	int max = -1;
@@ -171,21 +171,26 @@ public class Controller {
     			maxCondition = entry.getKey();
     		}
     	}
+    	if(max==0) return getSolutionScene("There is no problem with the pump.", "The pump is fine.");
     	return qMap.get(maxCondition);
     	
     }
     
-    public void dealWithProblems(HashMap<String, Integer> decisionMap, String[] conditions) {
+    public void dealWithProblems(HashMap<String, Integer> decisionMap, String[] conditions, boolean[] vals) {
     	
     	int k=0;
-    	for(String condition : conditions) {
-    		if(!getModel().getPump().wasChecked(condition)) k++;
+    	for(int i=0; i<conditions.length; i++) {
+    		if(!getModel().getPump().wasChecked(conditions[i])) k++;
+    		else {
+    			if(getModel().getPump().getCondition(conditions[i])!=vals[i]) {
+    				return;
+    			}
+    		}
     	}
     	
     	for(String condition : conditions) {
     		if(!getModel().getPump().wasChecked(condition)) 
     			decisionMap.replace(condition, decisionMap.get(condition)+(100/k));
-    		
     	}
     }
     

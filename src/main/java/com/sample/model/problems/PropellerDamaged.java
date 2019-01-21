@@ -7,7 +7,8 @@ public class PropellerDamaged extends Problem{
 	private static String solution = "Turn off the pump and check the condition of the propeller. Fix or replace if necessary.";
 	
 	private static String[] conditions = {"exitFlowBelowThreshold", "exitPressureBelowThreshold", "exitParametersCloseTo0"};
-	
+	private static boolean[] vals = {true, true, false};
+
 	public static boolean fitsModel(Pump pump) {
 		return (pump.wasChecked("exitFlowBelowThreshold") && pump.isExitFlowBelowThreshold())
 			&& (pump.wasChecked("exitPressureBelowThreshold") && pump.isExitPressureBelowThreshold())
@@ -24,5 +25,8 @@ public class PropellerDamaged extends Problem{
 	
 	public static String[] getConditions() {
 		return conditions;
+	}
+	public static boolean[] getVals() {
+		return vals;
 	}
 }
